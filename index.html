@@ -4,105 +4,796 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Knowledge X 🚀</title>
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #07111f;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050b16;
     color: white;
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* =========================
+   BACKGROUND
+========================= */
+
+.space {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #25206b,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 40%,
+            #064c66,
+            transparent 30%
+        ),
+        #050b16;
+}
+
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: floatStar linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatStar {
+
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(-10vh);
+    }
+
+}
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 7%;
-    background: #0c1b30;
+
+    padding: 18px 7%;
+
+    background: rgba(5, 11, 22, 0.88);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: 800;
 }
 
 .logo span {
     color: #00d9ff;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+.nav-links {
+    display: flex;
+    gap: 22px;
 }
 
-/* HERO */
+.nav-links a {
+    color: #c9d4e5;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #00d9ff;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
+    min-height: 82vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
     padding: 80px 20px;
-    background:
-    radial-gradient(circle at 30% 30%, #4520a8, transparent 30%),
-    radial-gradient(circle at 70% 30%, #006d91, transparent 30%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    border: 1px solid rgba(0,217,255,0.4);
+
+    background: rgba(0,217,255,0.08);
+
+    border-radius: 50px;
+
+    color: #00d9ff;
+
+    margin-bottom: 25px;
 }
 
 .hero h1 {
-    font-size: 55px;
+    font-size: clamp(45px, 8vw, 85px);
+    line-height: 1.05;
 }
 
 .gradient {
-    background: linear-gradient(
-        90deg,
-        #7c5cff,
-        #00d9ff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #7c5cff,
+            #00d9ff,
+            #7c5cff
+        );
+
+    background-size: 200% auto;
 
     color: transparent;
     background-clip: text;
+
+    animation: gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+
 }
 
 .hero p {
+    margin-top: 25px;
+
     font-size: 20px;
-    color: #b7c4d8;
+
+    color: #aebbd0;
+
+    line-height: 1.6;
 }
 
-/* SECTIONS */
+.hero-buttons {
+    margin-top: 35px;
 
-section {
-    padding: 60px 7%;
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
 
-.title {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 30px;
+.button {
+    display: inline-block;
+
+    padding: 15px 25px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.25s;
 }
 
-/* SUBJECTS */
+.primary {
+    color: white;
 
-.subjects {
+    background:
+        linear-gradient(
+            90deg,
+            #7c5cff,
+            #00aee0
+        );
+}
+
+.secondary {
+    color: white;
+
+    border: 1px solid #34445e;
+
+    background: rgba(255,255,255,0.05);
+}
+
+.button:hover {
+    transform: translateY(-4px);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+    padding: 25px 7%;
+}
+
+.dashboard-box {
+
+    max-width: 1200px;
+
+    margin: auto;
 
     display: grid;
 
     grid-template-columns:
-    repeat(auto-fit, minmax(180px, 1fr));
+        repeat(4, 1fr);
 
     gap: 15px;
 }
 
-.subject {
+.stat {
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(16,34,59,0.75);
+
+    border: 1px solid #263953;
+
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 30px;
+}
+
+.stat-number {
+    margin-top: 8px;
+
+    font-size: 26px;
+
+    font-weight: bold;
+}
+
+.stat-label {
+    color: #91a1b8;
+
+    margin-top: 5px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 90px 7%;
+}
+
+.section-title {
+
+    text-align: center;
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.section-description {
+
+    text-align: center;
+
+    color: #91a1b8;
+
+    max-width: 700px;
+
+    margin:
+        0 auto 45px;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   CLASSES
+========================= */
+
+.classes {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.class-card {
+
+    padding: 28px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,39,67,0.95),
+            rgba(9,20,37,0.95)
+        );
+
+    border: 1px solid #263953;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.class-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,217,255,0.1);
+}
+
+.class-icon {
+    font-size: 45px;
+
+    margin-bottom: 18px;
+}
+
+.class-card h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.class-card p {
+
+    color: #91a1b8;
+
+    line-height: 1.5;
+}
+
+/* =========================
+   AI QUESTION BOX
+========================= */
+
+.ai-box {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,39,67,0.95),
+            rgba(9,20,37,0.95)
+        );
+
+    border: 1px solid #263953;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.25);
+}
+
+.ai-title {
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.ai-subtitle {
+
+    text-align: center;
+
+    color: #91a1b8;
+
+    margin:
+        12px 0 25px;
+}
+
+.search-box {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.search-box input {
+
+    flex: 1;
+
+    padding: 17px;
+
+    border-radius: 12px;
+
+    border: 1px solid #34445e;
+
+    background: #07111f;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.search-box input:focus {
+
+    border-color: #00d9ff;
+}
+
+.search-box button {
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c5cff,
+            #00aee0
+        );
+}
+
+.answer-box {
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    min-height: 80px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid #263953;
+
+    color: #c9d4e5;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   SPELLING GAME
+========================= */
+
+.spelling-box {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #182c4c,
+            #0d1c31
+        );
+
+    border: 1px solid #263953;
+}
+
+.spelling-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 15px;
+}
+
+.spelling-box h3 {
+
+    margin-bottom: 20px;
+}
+
+.spell-button,
+.spell-check {
+
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin: 5px;
+}
+
+.spell-button {
+
+    background: #7c5cff;
+}
+
+.spell-check {
+
+    background: #008fa8;
+}
+
+#spellingInput {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 20px 0 10px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #34445e;
+
+    background: #07111f;
+
+    color: white;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    outline: none;
+}
+
+#spellingInput:focus {
+
+    border-color: #00d9ff;
+}
+
+.spelling-result {
+
+    margin-top: 20px;
+
+    color: #c9d4e5;
+
+    font-size: 18px;
+}
+
+/* =========================
+   SPACESHIP
+========================= */
+
+.ship-section {
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(21,38,72,0.35),
+            transparent
+        );
+}
+
+.ship-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+.ship-preview {
+
+    min-height: 420px;
+
+    border-radius: 30px;
+
+    border: 1px solid #263953;
+
+    background:
+        radial-gradient(
+            circle,
+            #142d55,
+            #07111f
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.planet {
+
+    position: absolute;
+
+    width: 140px;
+
+    height: 140px;
+
+    border-radius: 50%;
+
+    background: #4520a8;
+
+    right: -40px;
+
+    top: 30px;
+
+    box-shadow:
+        0 0 50px #4520a8;
+}
+
+.spaceship {
+
+    font-size: 130px;
+
+    animation:
+        shipFloat
+        3s
+        ease-in-out
+        infinite;
+}
+
+@keyframes shipFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+    }
+
+}
+
+.ship-info h2 {
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.ship-info p {
+
+    color: #9eacc1;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.parts {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.part {
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 25px;
+}
+
+.post {
 
     padding: 25px;
 
@@ -110,147 +801,253 @@ section {
 
     border: 1px solid #263953;
 
-    border-radius: 15px;
-
-    cursor: pointer;
-
-    text-align: center;
-
-    font-size: 20px;
+    border-radius: 20px;
 }
 
-.subject:hover {
+.post-header {
 
-    border-color: #00d9ff;
+    display: flex;
 
-    transform: translateY(-4px);
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
 }
 
-/* QUIZ */
+.avatar {
 
-.quiz {
+    width: 45px;
 
-    max-width: 700px;
+    height: 45px;
 
-    margin: auto;
+    border-radius: 50%;
 
-    background: #10223b;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c5cff,
+            #00d9ff
+        );
+}
+
+.post p {
+
+    color: #b0bdd0;
+
+    line-height: 1.5;
+}
+
+.social-side {
 
     padding: 30px;
 
     border-radius: 20px;
 
-    display: none;
+    background:
+        linear-gradient(
+            145deg,
+            #182c4c,
+            #0d1c31
+        );
 }
 
-.question {
+.social-side h3 {
 
-    font-size: 23px;
+    font-size: 25px;
 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.answer {
+.social-side p {
 
-    display: block;
+    color: #9eacc1;
 
-    width: 100%;
-
-    padding: 15px;
-
-    margin: 10px 0;
-
-    border-radius: 10px;
-
-    border: 1px solid #30445f;
-
-    background: #162d4a;
-
-    color: white;
-
-    cursor: pointer;
-
-    text-align: left;
-
-    font-size: 16px;
+    line-height: 1.6;
 }
 
-.answer:hover {
+/* =========================
+   VEDAS
+========================= */
 
-    background: #21466e;
+.vedas {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    border: 1px solid #493b20;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #201b10,
+            #11100c
+        );
 }
 
-.correct {
+.vedas h2 {
 
-    background: #087f55 !important;
+    margin-bottom: 15px;
 }
 
-.wrong {
+.vedas p {
 
-    background: #a62d48 !important;
+    color: #b9ae91;
+
+    line-height: 1.6;
 }
 
-/* XP */
+.veda-tags {
 
-.xp {
+    display: flex;
 
-    text-align: center;
+    gap: 10px;
 
-    font-size: 22px;
+    flex-wrap: wrap;
 
-    margin: 20px;
+    margin-top: 20px;
 }
 
-.xp span {
+.tag {
 
-    color: #00d9ff;
+    padding: 9px 14px;
 
-    font-weight: bold;
+    border-radius: 20px;
+
+    background: #30291a;
+
+    color: #d6c69d;
 }
 
-/* BUTTON */
-
-button {
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 10px;
-
-    background: #7c5cff;
-
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 16px;
-}
-
-button:hover {
-
-    background: #6244d6;
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
 
-    text-align: center;
-
-    padding: 40px;
-
-    color: #8291a7;
+    padding: 50px 7%;
 
     border-top: 1px solid #263953;
+
+    text-align: center;
+
+    color: #8291a7;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-box {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .classes {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .ship-container {
+
+        grid-template-columns: 1fr;
+    }
+
+    .social {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .nav-links {
+
+        display: none;
+    }
+
+    .dashboard-box {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .classes {
+
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+
+        flex-direction: column;
+    }
+
+    .search-box button {
+
+        padding: 15px;
+    }
+
+    .hero {
+
+        min-height: 75vh;
+    }
+
+    .section-title {
+
+        font-size: 32px;
+    }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
+
+<!-- BACKGROUND -->
+
+<div class="space"></div>
+
+<div class="star"
+style="left:5%; animation-duration:12s;"></div>
+
+<div class="star"
+style="left:15%; animation-duration:18s;"></div>
+
+<div class="star"
+style="left:25%; animation-duration:14s;"></div>
+
+<div class="star"
+style="left:40%; animation-duration:20s;"></div>
+
+<div class="star"
+style="left:55%; animation-duration:16s;"></div>
+
+<div class="star"
+style="left:70%; animation-duration:22s;"></div>
+
+<div class="star"
+style="left:82%; animation-duration:13s;"></div>
+
+<div class="star"
+style="left:94%; animation-duration:19s;"></div>
 
 
 <!-- NAVIGATION -->
@@ -259,19 +1056,21 @@ footer {
 
 <div class="logo">
 
-🧠 <span>Knowledge</span> X
+🧠 Knowledge <span>X</span>
 
 </div>
 
-<div>
+<div class="nav-links">
 
-<a href="#subjects">
-Classes
-</a>
+<a href="#classes">Classes</a>
 
-<a href="#quiz">
-Quiz
-</a>
+<a href="#ask">Ask AI</a>
+
+<a href="#spelling">Spelling</a>
+
+<a href="#build">Build</a>
+
+<a href="#social">Social</a>
 
 </div>
 
@@ -280,1048 +1079,919 @@ Quiz
 
 <!-- HERO -->
 
-<div class="hero">
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+
+🚀 Welcome to Knowledge X
+
+</div>
 
 <h1>
 
 Learn.
+
 <span class="gradient">
-Earn.
+Create.
 </span>
-Build.
+
+Explore.
 
 </h1>
 
 <p>
 
-Your knowledge powers your journey. 🚀
+A place where knowledge becomes
+creativity, skills become projects,
+and learning becomes an adventure.
 
 </p>
 
-<div class="xp">
+<div class="hero-buttons">
 
-⭐ XP:
-<span id="xp">
+<a
+href="#classes"
+class="button primary">
+
+Explore Classes
+
+</a>
+
+<a
+href="#build"
+class="button secondary">
+
+🚀 Build Something
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="dashboard">
+
+<div class="dashboard-box">
+
+<div class="stat">
+
+<div class="stat-icon">
+📚
+</div>
+
+<div class="stat-number">
+8+
+</div>
+
+<div class="stat-label">
+Learning Areas
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🚀
+</div>
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+Things To Build
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+👥
+</div>
+
+<div class="stat-number">
+Social
+</div>
+
+<div class="stat-label">
+Learn Together
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🚫
+</div>
+
+<div class="stat-number">
 0
+</div>
+
+<div class="stat-label">
+Ads
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CLASSES -->
+
+<section id="classes">
+
+<h2 class="section-title">
+
+📚 Explore Classes
+
+</h2>
+
+<p class="section-description">
+
+Learn what interests you.
+More subjects and learning paths
+can be added as Knowledge X grows.
+
+</p>
+
+<div class="classes">
+
+<div class="class-card">
+
+<div class="class-icon">
+💻
+</div>
+
+<h3>
+Coding
+</h3>
+
+<p>
+Build websites, programs,
+games and useful projects.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+🔬
+</div>
+
+<h3>
+Science
+</h3>
+
+<p>
+Explore Physics, Chemistry,
+Biology and Space.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+📐
+</div>
+
+<h3>
+Maths
+</h3>
+
+<p>
+Develop problem solving,
+logic and mathematical thinking.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+📖
+</div>
+
+<h3>
+English
+</h3>
+
+<p>
+Improve grammar, vocabulary,
+reading and writing.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+🌍
+</div>
+
+<h3>
+Social Studies
+</h3>
+
+<p>
+Explore history, geography,
+civics and society.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+🤖
+</div>
+
+<h3>
+Artificial Intelligence
+</h3>
+
+<p>
+Understand AI and create
+intelligent projects.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+🌐
+</div>
+
+<h3>
+Regional Languages
+</h3>
+
+<p>
+Explore Indian and world
+languages and literature.
+</p>
+
+</div>
+
+
+<div class="class-card">
+
+<div class="class-icon">
+🕉️
+</div>
+
+<h3>
+Vedas
+</h3>
+
+<p>
+Optional learning including
+Sūktas, Sandhi and Sanskrit.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AI -->
+
+<section id="ask">
+
+<h2 class="section-title">
+
+🤖 Ask Knowledge X
+
+</h2>
+
+<p class="section-description">
+
+Ask questions and explore ideas.
+The real AI connection will be added
+securely later.
+
+</p>
+
+<div class="ai-box">
+
+<div class="ai-title">
+🔎 Ask Anything
+</div>
+
+<p class="ai-subtitle">
+
+"What is gravity?"
+
+"Teach me Python."
+
+"Explain photosynthesis."
+
+</p>
+
+<div class="search-box">
+
+<input
+type="text"
+id="questionInput"
+placeholder="Ask Knowledge X anything..."
+onkeydown="handleEnter(event)"
+>
+
+<button onclick="askKnowledgeX()">
+
+🚀 Ask
+
+</button>
+
+</div>
+
+<div
+id="answer"
+class="answer-box">
+
+Your answer will appear here.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SPELLING -->
+
+<section id="spelling">
+
+<h2 class="section-title">
+
+🔤 Spell the Word
+
+</h2>
+
+<p class="section-description">
+
+Listen to the word and type
+the correct spelling.
+
+</p>
+
+<div class="spelling-box">
+
+<div class="spelling-icon">
+🔊
+</div>
+
+<h3>
+Listen carefully!
+</h3>
+
+<button
+class="spell-button"
+onclick="speakWord()">
+
+🔊 Hear Word
+
+</button>
+
+<input
+id="spellingInput"
+type="text"
+placeholder="Type the spelling..."
+onkeydown="spellingEnter(event)"
+>
+
+<button
+class="spell-check"
+onclick="checkSpelling()">
+
+✅ Check
+
+</button>
+
+<div
+id="spellingResult"
+class="spelling-result">
+
+⭐ Score: 0
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SPACESHIP -->
+
+<section id="build" class="ship-section">
+
+<h2 class="section-title">
+
+🚀 Build Your Spaceship
+
+</h2>
+
+<p class="section-description">
+
+Learn new skills and eventually
+use your achievements to create
+and customize your own spacecraft.
+
+</p>
+
+<div class="ship-container">
+
+<div class="ship-preview">
+
+<div class="planet"></div>
+
+<div class="spaceship">
+🚀
+</div>
+
+</div>
+
+<div class="ship-info">
+
+<h2>
+Your Ship
+</h2>
+
+<p>
+
+Start with a basic spacecraft.
+As Knowledge X grows, you'll be
+able to unlock different parts,
+designs and missions.
+
+</p>
+
+<div class="parts">
+
+<div class="part">
+🛸 Hull
+</div>
+
+<div class="part">
+🪟 Cockpit
+</div>
+
+<div class="part">
+🔥 Engine
+</div>
+
+<div class="part">
+🧭 Navigation
+</div>
+
+<div class="part">
+📡 Communication
+</div>
+
+<div class="part">
+🤖 AI Module
+</div>
+
+</div>
+
+<br>
+
+<a
+href="#classes"
+class="button primary">
+
+Keep Learning 🚀
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SOCIAL -->
+
+<section id="social">
+
+<h2 class="section-title">
+
+👥 Knowledge X Social
+
+</h2>
+
+<p class="section-description">
+
+Share projects, ideas and discoveries
+with other learners.
+
+</p>
+
+<div class="social">
+
+<div class="post">
+
+<div class="post-header">
+
+<div class="avatar">
+🚀
+</div>
+
+<div>
+
+<strong>
+Future Builder
+</strong>
+
+<br>
+
+<small>
+Knowledge X
+</small>
+
+</div>
+
+</div>
+
+<p>
+
+"I just designed my first spaceship
+concept! Next I'm going to learn
+coding and make it interactive."
+
+</p>
+
+<br>
+
+<span>
+
+❤️ 24 &nbsp;&nbsp;
+💬 8 &nbsp;&nbsp;
+🚀 12
+
 </span>
 
 </div>
 
-</div>
 
+<div class="social-side">
 
-<!-- SUBJECTS -->
+<h3>
+Build Together
+</h3>
 
-<section id="subjects">
+<p>
 
-<h2 class="title">
+Learning doesn't have to happen
+alone. Share your projects, ask
+questions and discover what other
+learners are creating.
 
-🏫 Choose Your Class
+</p>
 
-</h2>
+<br>
 
+<a
+href="#classes"
+class="button secondary">
 
-<div class="subjects">
+Explore & Learn
 
-
-<div
-class="subject"
-onclick="startQuiz('Coding')">
-
-💻 Coding
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('Science')">
-
-🔬 Science
+</a>
 
 </div>
-
-
-<div
-class="subject"
-onclick="startQuiz('Maths')">
-
-📐 Maths
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('English')">
-
-📖 English
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('Social Studies')">
-
-🌍 Social Studies
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('AI')">
-
-🤖 AI
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('Languages')">
-
-🌐 Languages
-
-</div>
-
-
-<div
-class="subject"
-onclick="startQuiz('Vedas')">
-
-🕉️ Vedas
-
-</div>
-
 
 </div>
 
 </section>
 
 
-<!-- QUIZ -->
+<!-- VEDAS -->
 
 <section>
 
-<div
-class="quiz"
-id="quiz">
+<div class="vedas" id="vedas">
 
-
-<h2 id="quizTitle">
-Quiz
+<h2>
+🕉️ Vedas — Optional Learning
 </h2>
 
+<p>
 
-<div
-id="question"
-class="question">
-</div>
+Explore traditional Sanskrit learning
+at your own choice, including Sūktas,
+Sandhi and other language concepts.
 
-
-<div id="answers">
-</div>
-
-
-<p id="feedback">
 </p>
 
+<div class="veda-tags">
+
+<div class="tag">
+Sūktas
+</div>
+
+<div class="tag">
+Sandhi
+</div>
+
+<div class="tag">
+Sanskrit
+</div>
+
+<div class="tag">
+Grammar
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
-🚀 Knowledge X
+🚀 <strong>Knowledge X</strong>
 
 <br><br>
 
-Learn. Earn. Build. Explore.
+Learn. Create. Explore.
 
 <br><br>
 
-🚫 100% Ad-Free
+🚫 No Ads
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-
 /* =========================
-   XP
+   AI DEMO
 ========================= */
 
-let xp = 0;
+function askKnowledgeX() {
 
-
-/* =========================
-   QUESTION DATABASE
-========================= */
-
-const questionBank = {
-
-
-Coding: [
-
-{
-q: "What does HTML stand for?",
-
-a: [
-"Hyper Text Markup Language",
-"High Tech Modern Language",
-"Hyperlink Text Management",
-"Home Tool Markup"
-],
-
-correct: 0
-},
-
-{
-q: "Which language is mainly used to style webpages?",
-
-a: [
-"Python",
-"CSS",
-"Java",
-"C++"
-],
-
-correct: 1
-},
-
-{
-q: "Which symbol is used for comments in JavaScript?",
-
-a: [
-"//",
-"##",
-"<!--",
-"**"
-],
-
-correct: 0
-},
-
-{
-q: "Which tag creates a paragraph in HTML?",
-
-a: [
-"<p>",
-"<h1>",
-"<img>",
-"<br>"
-],
-
-correct: 0
-},
-
-{
-q: "Which language runs directly in most web browsers?",
-
-a: [
-"JavaScript",
-"Python",
-"C++",
-"SQL"
-],
-
-correct: 0
-}
-
-],
-
-
-Maths: [
-
-{
-q: "What is 5 × 6?",
-
-a: [
-"11",
-"30",
-"56",
-"25"
-],
-
-correct: 1
-},
-
-{
-q: "What is 100 ÷ 10?",
-
-a: [
-"5",
-"10",
-"20",
-"50"
-],
-
-correct: 1
-},
-
-{
-q: "What is 12 + 8?",
-
-a: [
-"18",
-"19",
-"20",
-"21"
-],
-
-correct: 2
-},
-
-{
-q: "What is 9²?",
-
-a: [
-"18",
-"27",
-"72",
-"81"
-],
-
-correct: 3
-},
-
-{
-q: "How many sides does a triangle have?",
-
-a: [
-"2",
-"3",
-"4",
-"5"
-],
-
-correct: 1
-}
-
-],
-
-
-Science: [
-
-{
-q: "Which planet is known as the Red Planet?",
-
-a: [
-"Earth",
-"Venus",
-"Mars",
-"Jupiter"
-],
-
-correct: 2
-},
-
-{
-q: "What gas do humans need to breathe?",
-
-a: [
-"Oxygen",
-"Carbon dioxide",
-"Hydrogen",
-"Helium"
-],
-
-correct: 0
-},
-
-{
-q: "What is H₂O?",
-
-a: [
-"Salt",
-"Water",
-"Oxygen",
-"Hydrogen"
-],
-
-correct: 1
-},
-
-{
-q: "Which force pulls objects toward Earth?",
-
-a: [
-"Magnetism",
-"Friction",
-"Gravity",
-"Electricity"
-],
-
-correct: 2
-},
-
-{
-q: "How many planets are in our Solar System?",
-
-a: [
-"7",
-"8",
-"9",
-"10"
-],
-
-correct: 1
-}
-
-],
-
-
-English: [
-
-{
-q: "Which word is a noun?",
-
-a: [
-"Run",
-"Beautiful",
-"School",
-"Quickly"
-],
-
-correct: 2
-},
-
-{
-q: "What is the opposite of 'hot'?",
-
-a: [
-"Warm",
-"Cold",
-"Dry",
-"Fast"
-],
-
-correct: 1
-},
-
-{
-q: "Which is a verb?",
-
-a: [
-"Jump",
-"Blue",
-"Table",
-"Happy"
-],
-
-correct: 0
-},
-
-{
-q: "What is the plural of 'child'?",
-
-a: [
-"Childs",
-"Childes",
-"Children",
-"Childrens"
-],
-
-correct: 2
-},
-
-{
-q: "Which punctuation ends a question?",
-
-a: [
-".",
-",",
-"!",
-"?"
-],
-
-correct: 3
-}
-
-],
-
-
-"Social Studies": [
-
-{
-q: "Which is the largest continent?",
-
-a: [
-"Africa",
-"Asia",
-"Europe",
-"Australia"
-],
-
-correct: 1
-},
-
-{
-q: "What is the capital of India?",
-
-a: [
-"Mumbai",
-"New Delhi",
-"Kolkata",
-"Chennai"
-],
-
-correct: 1
-},
-
-{
-q: "Which is a democratic form of government?",
-
-a: [
-"Democracy",
-"Monarchy",
-"Dictatorship",
-"Empire"
-],
-
-correct: 0
-},
-
-{
-q: "Which ocean is the largest?",
-
-a: [
-"Atlantic",
-"Indian",
-"Pacific",
-"Arctic"
-],
-
-correct: 2
-},
-
-{
-q: "How many states does India have?",
-
-a: [
-"26",
-"28",
-"30",
-"32"
-],
-
-correct: 1
-}
-
-],
-
-
-AI: [
-
-{
-q: "What does AI stand for?",
-
-a: [
-"Automatic Internet",
-"Artificial Intelligence",
-"Advanced Internet",
-"Artificial Information"
-],
-
-correct: 1
-},
-
-{
-q: "Which is an example of AI?",
-
-a: [
-"Calculator",
-"AI chatbot",
-"Light bulb",
-"Chair"
-],
-
-correct: 1
-},
-
-{
-q: "What is machine learning?",
-
-a: [
-"A type of computer screen",
-"A way computers learn from data",
-"A keyboard",
-"A programming language"
-],
-
-correct: 1
-},
-
-{
-q: "What does ML stand for?",
-
-a: [
-"Machine Learning",
-"Modern Logic",
-"Main Language",
-"Machine Logic"
-],
-
-correct: 0
-},
-
-{
-q: "Which field helps computers understand images?",
-
-a: [
-"Computer Vision",
-"Accounting",
-"Typing",
-"Printing"
-],
-
-correct: 0
-}
-
-],
-
-
-Languages: [
-
-{
-q: "Which language uses the Devanagari script?",
-
-a: [
-"Hindi",
-"English",
-"Kannada",
-"Japanese"
-],
-
-correct: 0
-},
-
-{
-q: "Kannada is primarily spoken in which Indian state?",
-
-a: [
-"Kerala",
-"Karnataka",
-"Punjab",
-"Assam"
-],
-
-correct: 1
-},
-
-{
-q: "Which language is mainly spoken in Tamil Nadu?",
-
-a: [
-"Tamil",
-"Gujarati",
-"Punjabi",
-"Bengali"
-],
-
-correct: 0
-},
-
-{
-q: "Which language is primarily spoken in Maharashtra?",
-
-a: [
-"Marathi",
-"Telugu",
-"Malayalam",
-"Odia"
-],
-
-correct: 0
-},
-
-{
-q: "Sanskrit is an ancient language of which region?",
-
-a: [
-"South Asia",
-"South America",
-"Europe",
-"Australia"
-],
-
-correct: 0
-}
-
-],
-
-
-Vedas: [
-
-{
-q: "What is Sandhi?",
-
-a: [
-"A process involving combination of sounds or words",
-"A type of mathematics",
-"A planet",
-"A musical instrument"
-],
-
-correct: 0
-},
-
-{
-q: "What is a Sukta?",
-
-a: [
-"A Vedic hymn",
-"A computer program",
-"A mathematical equation",
-"A type of food"
-],
-
-correct: 0
-},
-
-{
-q: "Sanskrit is traditionally written using which script in many modern editions?",
-
-a: [
-"Devanagari",
-"Latin",
-"Greek",
-"Arabic"
-],
-
-correct: 0
-},
-
-{
-q: "The Vedas are texts associated with which ancient tradition?",
-
-a: [
-"Vedic tradition",
-"Roman tradition",
-"Egyptian tradition",
-"Greek tradition"
-],
-
-correct: 0
-},
-
-{
-q: "Which subject can help in studying Sanskrit grammar?",
-
-a: [
-"Vyākaraṇa",
-"Geometry",
-"Physics",
-"Geography"
-],
-
-correct: 0
-}
-
-]
-
-};
-
-
-/* =========================
-   QUIZ VARIABLES
-========================= */
-
-let currentQuiz = [];
-
-let currentQuestion = 0;
-
-let score = 0;
-
-
-/* =========================
-   START QUIZ
-========================= */
-
-function startQuiz(subject) {
-
-    const questions =
-        questionBank[subject];
-
-
-    /*
-       Make a copy so the original
-       question bank is not changed.
-    */
-
-    let available =
-        [...questions];
-
-
-    /*
-       Shuffle questions.
-       This means a different order
-       can appear each time.
-    */
-
-    available.sort(
-        () => Math.random() - 0.5
-    );
-
-
-    /*
-       Select maximum 5 questions.
-    */
-
-    currentQuiz =
-        available.slice(0, 5);
-
-
-    currentQuestion = 0;
-
-    score = 0;
-
-
-    document.getElementById(
-        "quiz"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "quizTitle"
-    ).innerText =
-        "📝 " + subject + " Quiz";
-
-
-    document.getElementById(
-        "quiz"
-    ).scrollIntoView({
-        behavior: "smooth"
-    });
-
-
-    showQuestion();
-
-}
-
-
-/* =========================
-   SHOW QUESTION
-========================= */
-
-function showQuestion() {
-
-    const q =
-        currentQuiz[currentQuestion];
-
-
-    document.getElementById(
-        "question"
-    ).innerText =
-
-        "Question " +
-
-        (currentQuestion + 1) +
-
-        " of " +
-
-        currentQuiz.length +
-
-        "\n\n" +
-
-        q.q;
-
-
-    const answers =
+    const input =
         document.getElementById(
-            "answers"
+            "questionInput"
         );
 
+    const answer =
+        document.getElementById(
+            "answer"
+        );
 
-    answers.innerHTML = "";
-
-
-    document.getElementById(
-        "feedback"
-    ).innerText = "";
-
-
-    q.a.forEach(
-        (answer, index) => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
+    const question =
+        input.value.trim();
 
 
-            button.className =
-                "answer";
+    if (question === "") {
+
+        answer.innerHTML =
+            "⚠️ Please type a question first.";
+
+        return;
+
+    }
 
 
-            button.innerText =
-                answer;
+    answer.innerHTML =
+        "🤖 Knowledge X is thinking...";
 
 
-            button.onclick =
-                () => checkAnswer(
-                    index
-                );
+    /*
+       TEMPORARY DEMO
+
+       This is NOT connected to a real AI yet.
+       We will connect it securely later.
+    */
+
+    setTimeout(function() {
+
+        answer.innerHTML =
+
+            "💡 You asked:<br><br>" +
+
+            "<strong>" +
+            escapeHTML(question) +
+            "</strong><br><br>" +
+
+            "The Knowledge X AI assistant "
+            +
+            "will answer this question when "
+            +
+            "the secure AI connection is added. 🚀";
+
+    }, 700);
+
+}
 
 
-            answers.appendChild(
-                button
-            );
+function handleEnter(event) {
 
-        }
-    );
+    if (event.key === "Enter") {
+
+        askKnowledgeX();
+
+    }
+
+}
+
+
+/* Protect the page from HTML typed
+   into the question box */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
 
 }
 
 
 /* =========================
-   CHECK ANSWER
+   SPELLING GAME
 ========================= */
 
-function checkAnswer(index) {
+const spellingWords = [
 
-    const q =
-        currentQuiz[currentQuestion];
+    "knowledge",
+    "science",
+    "computer",
+    "language",
+    "planet",
+    "adventure",
+    "education",
+    "spaceship",
+    "discovery",
+    "technology"
+
+];
 
 
-    const buttons =
-        document.querySelectorAll(
-            ".answer"
+let spellingScore = 0;
+
+let currentWord = "";
+
+
+/* Choose random word */
+
+function newSpellingWord() {
+
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            spellingWords.length
         );
 
+    currentWord =
+        spellingWords[randomIndex];
 
-    buttons.forEach(
-        button =>
-            button.disabled = true
+}
+
+
+/* Hear word */
+
+function speakWord() {
+
+    if (currentWord === "") {
+
+        newSpellingWord();
+
+    }
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            currentWord
+        );
+
+    speech.rate = 0.8;
+
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(
+        speech
     );
 
-
-    if(index === q.correct) {
-
-        buttons[index]
-            .classList.add(
-                "correct"
-            );
+}
 
 
-        score++;
+/* Check spelling */
 
-        xp += 10;
+function checkSpelling() {
 
-
+    const input =
         document.getElementById(
-            "xp"
-        ).innerText = xp;
+            "spellingInput"
+        );
 
-
+    const result =
         document.getElementById(
-            "feedback"
-        ).innerText =
-            "✅ Correct! +10 XP ⭐";
+            "spellingResult"
+        );
+
+    const answer =
+        input.value
+            .trim()
+            .toLowerCase();
+
+
+    if (answer === "") {
+
+        result.innerHTML =
+            "✏️ Type the word first.";
+
+        return;
+
+    }
+
+
+    if (answer === currentWord) {
+
+        spellingScore++;
+
+        result.innerHTML =
+
+            "🎉 Correct! ⭐ Score: " +
+
+            spellingScore;
+
+
+        input.value = "";
+
+        newSpellingWord();
+
+
+        setTimeout(
+            speakWord,
+            500
+        );
 
     }
 
     else {
 
-        buttons[index]
-            .classList.add(
-                "wrong"
-            );
+        result.innerHTML =
 
-
-        buttons[q.correct]
-            .classList.add(
-                "correct"
-            );
-
-
-        document.getElementById(
-            "feedback"
-        ).innerText =
-            "❌ Incorrect. No XP this time.";
-
-    }
-
-
-    setTimeout(
-        nextQuestion,
-        1200
-    );
-
-}
-
-
-/* =========================
-   NEXT QUESTION
-========================= */
-
-function nextQuestion() {
-
-    currentQuestion++;
-
-
-    if(
-        currentQuestion
-        <
-        currentQuiz.length
-    ) {
-
-        showQuestion();
-
-    }
-
-    else {
-
-        finishQuiz();
+            "❌ Not quite. Try again!";
 
     }
 
 }
 
 
-/* =========================
-   FINISH QUIZ
-========================= */
+function spellingEnter(event) {
 
-function finishQuiz() {
+    if (event.key === "Enter") {
 
-    document.getElementById(
-        "question"
-    ).innerText =
-        "🎉 Quiz Complete!";
+        checkSpelling();
 
-
-    document.getElementById(
-        "answers"
-    ).innerHTML =
-
-        "<h3>" +
-
-        "Score: " +
-
-        score +
-
-        "/" +
-
-        currentQuiz.length +
-
-        "</h3>";
-
-
-    document.getElementById(
-        "feedback"
-    ).innerText =
-
-        "⭐ You earned XP for your correct answers!";
+    }
 
 }
+
+
+/* Start spelling game */
+
+newSpellingWord();
 
 </script>
+
 
 </body>
 

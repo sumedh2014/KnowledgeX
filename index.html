@@ -1,1 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Knowledge X 🚀</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: #0c1b30;
+            border-bottom: 1px solid #263953;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d9ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    #4520a8,
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 70% 30%,
+                    #006d91,
+                    transparent 30%
+                );
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                #7c5cff,
+                #00d9ff
+            );
+
+            color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 21px;
+            color: #b7c4d8;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(
+                90deg,
+                #7c5cff,
+                #00d9ff
+            );
+
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* CLASSES */
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 40px;
+        }
+
+        .classes {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            background: #10223b;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #263953;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #00d9ff;
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #9eacc1;
+            line-height: 1.5;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 20px;
+        }
+
+        .step {
+            background: #10223b;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 35px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #8291a7;
+            border-top: 1px solid #263953;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            nav a {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            🧠 <span>Knowledge</span> X
+        </div>
+
+        <div>
+            <a href="#classes">Classes</a>
+            <a href="#how">How It Works</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            Learn.
+            <span class="gradient">Earn.</span>
+            Build.
+        </h1>
+
+        <p>
+            Turn your knowledge into an adventure. 🚀
+        </p>
+
+        <a
+            class="button"
+            href="#classes"
+        >
+            🚀 Start Learning
+        </a>
+
+    </section>
+
+
+    <!-- CLASSES -->
+
+    <section id="classes">
+
+        <h2 class="title">
+            🏫 Explore Classes
+        </h2>
+
+        <div class="classes">
+
+
+            <!-- CODING -->
+
+            <div class="card">
+
+                <div class="icon">
+                    💻
+                </div>
+
+                <h3>
+                    Coding
+                </h3>
+
+                <p>
+                    Learn HTML, CSS,
+                    JavaScript, Python
+                    and programming.
+                </p>
+
+            </div>
+
+
+            <!-- SCIENCE -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🔬
+                </div>
+
+                <h3>
+                    Science
+                </h3>
+
+                <p>
+                    Explore Physics,
+                    Chemistry, Biology
+                    and Space.
+                </p>
+
+            </div>
+
+
+            <!-- MATHS -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📐
+                </div>
+
+                <h3>
+                    Maths
+                </h3>
+
+                <p>
+                    Practice algebra,
+                    geometry, equations
+                    and logic.
+                </p>
+
+            </div>
+
+
+            <!-- ENGLISH -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📖
+                </div>
+
+                <h3>
+                    English
+                </h3>
+
+                <p>
+                    Improve grammar,
+                    vocabulary, reading
+                    and writing.
+                </p>
+
+            </div>
+
+
+            <!-- SOCIAL STUDIES -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🌍
+                </div>
+
+                <h3>
+                    Social Studies
+                </h3>
+
+                <p>
+                    Learn history,
+                    geography, civics
+                    and economics.
+                </p>
+
+            </div>
+
+
+            <!-- AI -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Artificial Intelligence
+                </h3>
+
+                <p>
+                    Discover AI,
+                    machine learning
+                    and intelligent systems.
+                </p>
+
+            </div>
+
+
+            <!-- LANGUAGES -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Regional Languages
+                </h3>
+
+                <p>
+                    Learn Indian languages,
+                    vocabulary and literature.
+                </p>
+
+            </div>
+
+
+            <!-- VEDAS -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🕉️
+                </div>
+
+                <h3>
+                    Vedas
+                </h3>
+
+                <p>
+                    Optional learning with
+                    Sūktas, Sandhi, Sanskrit
+                    and more.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section id="how">
+
+        <h2 class="title">
+            🚀 How Knowledge X Works
+        </h2>
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    📚
+                </div>
+
+                <h3>
+                    1. Learn
+                </h3>
+
+                <p>
+                    Choose a subject
+                    and learn.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    📝
+                </div>
+
+                <h3>
+                    2. Quiz
+                </h3>
+
+                <p>
+                    Test your knowledge
+                    with quizzes.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    ⭐
+                </div>
+
+                <h3>
+                    3. Earn XP
+                </h3>
+
+                <p>
+                    Earn XP from
+                    correct answers.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    🚀
+                </div>
+
+                <h3>
+                    4. Build
+                </h3>
+
+                <p>
+                    Use XP to build
+                    your spaceship.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    🌌
+                </div>
+
+                <h3>
+                    5. Explore
+                </h3>
+
+                <p>
+                    Complete missions
+                    and explore space.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        🚀 <strong>Knowledge X</strong>
+
+        <br><br>
+
+        Learn. Earn. Build. Explore.
+
+        <br><br>
+
+        🚫 100% Ad-Free
+
+    </footer>
+
+</body>
+</html>

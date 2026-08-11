@@ -1,542 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Knowledge X 🚀</title>
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #07111f;
-            color: white;
-        }
+<title>Knowledge X 🚀</title>
 
-        /* NAVBAR */
+<style>
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 7%;
-            background: #0c1b30;
-            border-bottom: 1px solid #263953;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07111f;
+    color: white;
+}
 
-        .logo span {
-            color: #00d9ff;
-        }
+/* NAVBAR */
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: #0c1b30;
+}
 
-        /* HERO */
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background:
-                radial-gradient(
-                    circle at 30% 30%,
-                    #4520a8,
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 70% 30%,
-                    #006d91,
-                    transparent 30%
-                );
-        }
+.logo span {
+    color: #00d9ff;
+}
 
-        .hero h1 {
-            font-size: 65px;
-            margin-bottom: 20px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
 
-        .gradient {
-            background: linear-gradient(
-                90deg,
-                #7c5cff,
-                #00d9ff
-            );
+/* HERO */
 
-            color: transparent;
-            background-clip: text;
-        }
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background:
+    radial-gradient(circle at 30% 30%, #4520a8, transparent 30%),
+    radial-gradient(circle at 70% 30%, #006d91, transparent 30%);
+}
 
-        .hero p {
-            font-size: 21px;
-            color: #b7c4d8;
-        }
+.hero h1 {
+    font-size: 55px;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: linear-gradient(
-                90deg,
-                #7c5cff,
-                #00d9ff
-            );
+.gradient {
+    background: linear-gradient(
+        90deg,
+        #7c5cff,
+        #00d9ff
+    );
 
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-        }
+    color: transparent;
+    background-clip: text;
+}
 
-        /* CLASSES */
+.hero p {
+    font-size: 20px;
+    color: #b7c4d8;
+}
 
-        section {
-            padding: 70px 7%;
-        }
+/* SECTIONS */
 
-        .title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 40px;
-        }
+section {
+    padding: 60px 7%;
+}
 
-        .classes {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
+.title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
 
-            gap: 20px;
-        }
+/* SUBJECTS */
 
-        .card {
-            background: #10223b;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #263953;
-            transition: 0.2s;
-        }
+.subjects {
 
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: #00d9ff;
-        }
+    display: grid;
 
-        .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
+    grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
 
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
+    gap: 15px;
+}
 
-        .card p {
-            color: #9eacc1;
-            line-height: 1.5;
-        }
+.subject {
 
-        /* HOW IT WORKS */
+    padding: 25px;
 
-        .steps {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(200px, 1fr));
+    background: #10223b;
 
-            gap: 20px;
-        }
+    border: 1px solid #263953;
 
-        .step {
-            background: #10223b;
-            padding: 25px;
-            border-radius: 18px;
-            text-align: center;
-        }
+    border-radius: 15px;
 
-        .step-number {
-            font-size: 35px;
-        }
+    cursor: pointer;
 
-        /* FOOTER */
+    text-align: center;
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #8291a7;
-            border-top: 1px solid #263953;
-        }
+    font-size: 20px;
+}
 
-        /* MOBILE */
+.subject:hover {
 
-        @media (max-width: 600px) {
+    border-color: #00d9ff;
 
-            .hero h1 {
-                font-size: 42px;
-            }
+    transform: translateY(-4px);
+}
 
-            nav a {
-                display: none;
-            }
-        }
-    </style>
+/* QUIZ */
+
+.quiz {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    background: #10223b;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    display: none;
+}
+
+.question {
+
+    font-size: 23px;
+
+    margin-bottom: 20px;
+}
+
+.answer {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 10px 0;
+
+    border-radius: 10px;
+
+    border: 1px solid #30445f;
+
+    background: #162d4a;
+
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-size: 16px;
+}
+
+.answer:hover {
+
+    background: #21466e;
+}
+
+.correct {
+
+    background: #087f55 !important;
+}
+
+.wrong {
+
+    background: #a62d48 !important;
+}
+
+/* XP */
+
+.xp {
+
+    text-align: center;
+
+    font-size: 22px;
+
+    margin: 20px;
+}
+
+.xp span {
+
+    color: #00d9ff;
+
+    font-weight: bold;
+}
+
+/* BUTTON */
+
+button {
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    background: #7c5cff;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+button:hover {
+
+    background: #6244d6;
+}
+
+/* FOOTER */
+
+footer {
+
+    text-align: center;
+
+    padding: 40px;
+
+    color: #8291a7;
+
+    border-top: 1px solid #263953;
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
 
-    <nav>
+<!-- NAVIGATION -->
 
-        <div class="logo">
-            🧠 <span>Knowledge</span> X
-        </div>
+<nav>
 
-        <div>
-            <a href="#classes">Classes</a>
-            <a href="#how">How It Works</a>
-        </div>
+<div class="logo">
 
-    </nav>
+🧠 <span>Knowledge</span> X
 
+</div>
 
-    <!-- HERO -->
+<div>
 
-    <section class="hero">
+<a href="#subjects">
+Classes
+</a>
 
-        <h1>
-            Learn.
-            <span class="gradient">Earn.</span>
-            Build.
-        </h1>
+<a href="#quiz">
+Quiz
+</a>
 
-        <p>
-            Turn your knowledge into an adventure. 🚀
-        </p>
+</div>
 
-        <a
-            class="button"
-            href="#classes"
-        >
-            🚀 Start Learning
-        </a>
+</nav>
 
-    </section>
 
+<!-- HERO -->
 
-    <!-- CLASSES -->
+<div class="hero">
 
-    <section id="classes">
+<h1>
 
-        <h2 class="title">
-            🏫 Explore Classes
-        </h2>
+Learn.
+<span class="gradient">
+Earn.
+</span>
+Build.
 
-        <div class="classes">
+</h1>
 
+<p>
 
-            <!-- CODING -->
+Your knowledge powers your journey. 🚀
 
-            <div class="card">
+</p>
 
-                <div class="icon">
-                    💻
-                </div>
+<div class="xp">
 
-                <h3>
-                    Coding
-                </h3>
+⭐ XP:
+<span id="xp">
+0
+</span>
 
-                <p>
-                    Learn HTML, CSS,
-                    JavaScript, Python
-                    and programming.
-                </p>
+</div>
 
-            </div>
+</div>
 
 
-            <!-- SCIENCE -->
+<!-- SUBJECTS -->
 
-            <div class="card">
+<section id="subjects">
 
-                <div class="icon">
-                    🔬
-                </div>
+<h2 class="title">
 
-                <h3>
-                    Science
-                </h3>
+🏫 Choose Your Class
 
-                <p>
-                    Explore Physics,
-                    Chemistry, Biology
-                    and Space.
-                </p>
+</h2>
 
-            </div>
 
+<div class="subjects">
 
-            <!-- MATHS -->
 
-            <div class="card">
+<div
+class="subject"
+onclick="startQuiz('Coding')">
 
-                <div class="icon">
-                    📐
-                </div>
+💻 Coding
 
-                <h3>
-                    Maths
-                </h3>
+</div>
 
-                <p>
-                    Practice algebra,
-                    geometry, equations
-                    and logic.
-                </p>
 
-            </div>
+<div
+class="subject"
+onclick="startQuiz('Science')">
 
+🔬 Science
 
-            <!-- ENGLISH -->
+</div>
 
-            <div class="card">
 
-                <div class="icon">
-                    📖
-                </div>
+<div
+class="subject"
+onclick="startQuiz('Maths')">
 
-                <h3>
-                    English
-                </h3>
+📐 Maths
 
-                <p>
-                    Improve grammar,
-                    vocabulary, reading
-                    and writing.
-                </p>
+</div>
 
-            </div>
 
+<div
+class="subject"
+onclick="startQuiz('English')">
 
-            <!-- SOCIAL STUDIES -->
+📖 English
 
-            <div class="card">
+</div>
 
-                <div class="icon">
-                    🌍
-                </div>
 
-                <h3>
-                    Social Studies
-                </h3>
+<div
+class="subject"
+onclick="startQuiz('Social Studies')">
 
-                <p>
-                    Learn history,
-                    geography, civics
-                    and economics.
-                </p>
+🌍 Social Studies
 
-            </div>
+</div>
 
 
-            <!-- AI -->
+<div
+class="subject"
+onclick="startQuiz('AI')">
 
-            <div class="card">
+🤖 AI
 
-                <div class="icon">
-                    🤖
-                </div>
+</div>
 
-                <h3>
-                    Artificial Intelligence
-                </h3>
 
-                <p>
-                    Discover AI,
-                    machine learning
-                    and intelligent systems.
-                </p>
+<div
+class="subject"
+onclick="startQuiz('Languages')">
 
-            </div>
+🌐 Languages
 
+</div>
 
-            <!-- LANGUAGES -->
 
-            <div class="card">
+<div
+class="subject"
+onclick="startQuiz('Vedas')">
 
-                <div class="icon">
-                    🌐
-                </div>
+🕉️ Vedas
 
-                <h3>
-                    Regional Languages
-                </h3>
+</div>
 
-                <p>
-                    Learn Indian languages,
-                    vocabulary and literature.
-                </p>
 
-            </div>
+</div>
 
+</section>
 
-            <!-- VEDAS -->
 
-            <div class="card">
+<!-- QUIZ -->
 
-                <div class="icon">
-                    🕉️
-                </div>
+<section>
 
-                <h3>
-                    Vedas
-                </h3>
+<div
+class="quiz"
+id="quiz">
 
-                <p>
-                    Optional learning with
-                    Sūktas, Sandhi, Sanskrit
-                    and more.
-                </p>
 
-            </div>
+<h2 id="quizTitle">
+Quiz
+</h2>
 
-        </div>
 
-    </section>
+<div
+id="question"
+class="question">
+</div>
 
 
-    <!-- HOW IT WORKS -->
+<div id="answers">
+</div>
 
-    <section id="how">
 
-        <h2 class="title">
-            🚀 How Knowledge X Works
-        </h2>
+<p id="feedback">
+</p>
 
-        <div class="steps">
 
+</div>
 
-            <div class="step">
+</section>
 
-                <div class="step-number">
-                    📚
-                </div>
 
-                <h3>
-                    1. Learn
-                </h3>
+<footer>
 
-                <p>
-                    Choose a subject
-                    and learn.
-                </p>
+🚀 Knowledge X
 
-            </div>
+<br><br>
 
+Learn. Earn. Build. Explore.
 
-            <div class="step">
+<br><br>
 
-                <div class="step-number">
-                    📝
-                </div>
+🚫 100% Ad-Free
 
-                <h3>
-                    2. Quiz
-                </h3>
+</footer>
 
-                <p>
-                    Test your knowledge
-                    with quizzes.
-                </p>
 
-            </div>
+<script>
 
 
-            <div class="step">
+/* =========================
+   XP
+========================= */
 
-                <div class="step-number">
-                    ⭐
-                </div>
+let xp = 0;
 
-                <h3>
-                    3. Earn XP
-                </h3>
 
-                <p>
-                    Earn XP from
-                    correct answers.
-                </p>
+/* =========================
+   QUESTION DATABASE
+========================= */
 
-            </div>
+const questionBank = {
 
 
-            <div class="step">
+Coding: [
 
-                <div class="step-number">
-                    🚀
-                </div>
+{
+q: "What does HTML stand for?",
 
-                <h3>
-                    4. Build
-                </h3>
+a: [
+"Hyper Text Markup Language",
+"High Tech Modern Language",
+"Hyperlink Text Management",
+"Home Tool Markup"
+],
 
-                <p>
-                    Use XP to build
-                    your spaceship.
-                </p>
+correct: 0
+},
 
-            </div>
+{
+q: "Which language is mainly used to style webpages?",
 
+a: [
+"Python",
+"CSS",
+"Java",
+"C++"
+],
 
-            <div class="step">
+correct: 1
+},
 
-                <div class="step-number">
-                    🌌
-                </div>
+{
+q: "Which symbol is used for comments in JavaScript?",
 
-                <h3>
-                    5. Explore
-                </h3>
+a: [
+"//",
+"##",
+"<!--",
+"**"
+],
 
-                <p>
-                    Complete missions
-                    and explore space.
-                </p>
+correct: 0
+},
 
-            </div>
+{
+q: "Which tag creates a paragraph in HTML?",
 
-        </div>
+a: [
+"<p>",
+"<h1>",
+"<img>",
+"<br>"
+],
 
-    </section>
+correct: 0
+},
 
+{
+q: "Which language runs directly in most web browsers?",
 
-    <!-- FOOTER -->
+a: [
+"JavaScript",
+"Python",
+"C++",
+"SQL"
+],
 
-    <footer>
+correct: 0
+}
 
-        🚀 <strong>Knowledge X</strong>
+],
 
-        <br><br>
 
-        Learn. Earn. Build. Explore.
+Maths: [
 
-        <br><br>
+{
+q: "What is 5 × 6?",
 
-        🚫 100% Ad-Free
+a: [
+"11",
+"30",
+"56",
+"25"
+],
 
-    </footer>
+correct: 1
+},
+
+{
+q: "What is 100 ÷ 10?",
+
+a: [
+"5",
+"10",
+"20",
+"50"
+],
+
+correct: 1
+},
+
+{
+q: "What is 12 + 8?",
+
+a: [
+"18",
+"19",
+"20",
+"21"
+],
+
+correct: 2
+},
+
+{
+q: "What is 9²?",
+
+a: [
+"18",
+"27",
+"72",
+"81"
+],
+
+correct: 3
+},
+
+{
+q: "How many sides does a triangle have?",
+
+a: [
+"2",
+"3",
+"4",
+"5"
+],
+
+correct: 1
+}
+
+],
+
+
+Science: [
+
+{
+q: "Which planet is known as the Red Planet?",
+
+a: [
+"Earth",
+"Venus",
+"Mars",
+"Jupiter"
+],
+
+correct: 2
+},
+
+{
+q: "What gas do humans need to breathe?",
+
+a: [
+"Oxygen",
+"Carbon dioxide",
+"Hydrogen",
+"Helium"
+],
+
+correct: 0
+},
+
+{
+q: "What is H₂O?",
+
+a: [
+"Salt",
+"Water",
+"Oxygen",
+"Hydrogen"
+],
+
+correct: 1
+},
+
+{
+q: "Which force pulls objects toward Earth?",
+
+a: [
+"Magnetism",
+"Friction",
+"Gravity",
+"Electricity"
+],
+
+correct: 2
+},
+
+{
+q: "How many planets are in our Solar System?",
+
+a: [
+"7",
+"8",
+"9",
+"10"
+],
+
+correct: 1
+}
+
+],
+
+
+English: [
+
+{
+q: "Which word is a noun?",
+
+a: [
+"Run",
+"Beautiful",
+"School",
+"Quickly"
+],
+
+correct: 2
+},
+
+{
+q: "What is the opposite of 'hot'?",
+
+a: [
+"Warm",
+"Cold",
+"Dry",
+"Fast"
+],
+
+correct: 1
+},
+
+{
+q: "Which is a verb?",
+
+a: [
+"Jump",
+"Blue",
+"Table",
+"Happy"
+],
+
+correct: 0
+},
+
+{
+q: "What is the plural of 'child'?",
+
+a: [
+"Childs",
+"Childes",
+"Children",
+"Childrens"
+],
+
+correct: 2
+},
+
+{
+q: "Which punctuation ends a question?",
+
+a: [
+".",
+",",
+"!",
+"?"
+],
+
+correct: 3
+}
+
+],
+
+
+"Social Studies": [
+
+{
+q: "Which is the largest continent?",
+
+a: [
+"Africa",
+"Asia",
+"Europe",
+"Australia"
+],
+
+correct: 1
+},
+
+{
+q: "What is the capital of India?",
+
+a: [
+"Mumbai",
+"New Delhi",
+"Kolkata",
+"Chennai"
+],
+
+correct: 1
+},
+
+{
+q: "Which is a democratic form of government?",
+
+a: [
+"Democracy",
+"Monarchy",
+"Dictatorship",
+"Empire"
+],
+
+correct: 0
+},
+
+{
+q: "Which ocean is the largest?",
+
+a: [
+"Atlantic",
+"Indian",
+"Pacific",
+"Arctic"
+],
+
+correct: 2
+},
+
+{
+q: "How many states does India have?",
+
+a: [
+"26",
+"28",
+"30",
+"32"
+],
+
+correct: 1
+}
+
+],
+
+
+AI: [
+
+{
+q: "What does AI stand for?",
+
+a: [
+"Automatic Internet",
+"Artificial Intelligence",
+"Advanced Internet",
+"Artificial Information"
+],
+
+correct: 1
+},
+
+{
+q: "Which is an example of AI?",
+
+a: [
+"Calculator",
+"AI chatbot",
+"Light bulb",
+"Chair"
+],
+
+correct: 1
+},
+
+{
+q: "What is machine learning?",
+
+a: [
+"A type of computer screen",
+"A way computers learn from data",
+"A keyboard",
+"A programming language"
+],
+
+correct: 1
+},
+
+{
+q: "What does ML stand for?",
+
+a: [
+"Machine Learning",
+"Modern Logic",
+"Main Language",
+"Machine Logic"
+],
+
+correct: 0
+},
+
+{
+q: "Which field helps computers understand images?",
+
+a: [
+"Computer Vision",
+"Accounting",
+"Typing",
+"Printing"
+],
+
+correct: 0
+}
+
+],
+
+
+Languages: [
+
+{
+q: "Which language uses the Devanagari script?",
+
+a: [
+"Hindi",
+"English",
+"Kannada",
+"Japanese"
+],
+
+correct: 0
+},
+
+{
+q: "Kannada is primarily spoken in which Indian state?",
+
+a: [
+"Kerala",
+"Karnataka",
+"Punjab",
+"Assam"
+],
+
+correct: 1
+},
+
+{
+q: "Which language is mainly spoken in Tamil Nadu?",
+
+a: [
+"Tamil",
+"Gujarati",
+"Punjabi",
+"Bengali"
+],
+
+correct: 0
+},
+
+{
+q: "Which language is primarily spoken in Maharashtra?",
+
+a: [
+"Marathi",
+"Telugu",
+"Malayalam",
+"Odia"
+],
+
+correct: 0
+},
+
+{
+q: "Sanskrit is an ancient language of which region?",
+
+a: [
+"South Asia",
+"South America",
+"Europe",
+"Australia"
+],
+
+correct: 0
+}
+
+],
+
+
+Vedas: [
+
+{
+q: "What is Sandhi?",
+
+a: [
+"A process involving combination of sounds or words",
+"A type of mathematics",
+"A planet",
+"A musical instrument"
+],
+
+correct: 0
+},
+
+{
+q: "What is a Sukta?",
+
+a: [
+"A Vedic hymn",
+"A computer program",
+"A mathematical equation",
+"A type of food"
+],
+
+correct: 0
+},
+
+{
+q: "Sanskrit is traditionally written using which script in many modern editions?",
+
+a: [
+"Devanagari",
+"Latin",
+"Greek",
+"Arabic"
+],
+
+correct: 0
+},
+
+{
+q: "The Vedas are texts associated with which ancient tradition?",
+
+a: [
+"Vedic tradition",
+"Roman tradition",
+"Egyptian tradition",
+"Greek tradition"
+],
+
+correct: 0
+},
+
+{
+q: "Which subject can help in studying Sanskrit grammar?",
+
+a: [
+"Vyākaraṇa",
+"Geometry",
+"Physics",
+"Geography"
+],
+
+correct: 0
+}
+
+]
+
+};
+
+
+/* =========================
+   QUIZ VARIABLES
+========================= */
+
+let currentQuiz = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz(subject) {
+
+    const questions =
+        questionBank[subject];
+
+
+    /*
+       Make a copy so the original
+       question bank is not changed.
+    */
+
+    let available =
+        [...questions];
+
+
+    /*
+       Shuffle questions.
+       This means a different order
+       can appear each time.
+    */
+
+    available.sort(
+        () => Math.random() - 0.5
+    );
+
+
+    /*
+       Select maximum 5 questions.
+    */
+
+    currentQuiz =
+        available.slice(0, 5);
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "quizTitle"
+    ).innerText =
+        "📝 " + subject + " Quiz";
+
+
+    document.getElementById(
+        "quiz"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+
+    showQuestion();
+
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuestion() {
+
+    const q =
+        currentQuiz[currentQuestion];
+
+
+    document.getElementById(
+        "question"
+    ).innerText =
+
+        "Question " +
+
+        (currentQuestion + 1) +
+
+        " of " +
+
+        currentQuiz.length +
+
+        "\n\n" +
+
+        q.q;
+
+
+    const answers =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answers.innerHTML = "";
+
+
+    document.getElementById(
+        "feedback"
+    ).innerText = "";
+
+
+    q.a.forEach(
+        (answer, index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.innerText =
+                answer;
+
+
+            button.onclick =
+                () => checkAnswer(
+                    index
+                );
+
+
+            answers.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
+function checkAnswer(index) {
+
+    const q =
+        currentQuiz[currentQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button =>
+            button.disabled = true
+    );
+
+
+    if(index === q.correct) {
+
+        buttons[index]
+            .classList.add(
+                "correct"
+            );
+
+
+        score++;
+
+        xp += 10;
+
+
+        document.getElementById(
+            "xp"
+        ).innerText = xp;
+
+
+        document.getElementById(
+            "feedback"
+        ).innerText =
+            "✅ Correct! +10 XP ⭐";
+
+    }
+
+    else {
+
+        buttons[index]
+            .classList.add(
+                "wrong"
+            );
+
+
+        buttons[q.correct]
+            .classList.add(
+                "correct"
+            );
+
+
+        document.getElementById(
+            "feedback"
+        ).innerText =
+            "❌ Incorrect. No XP this time.";
+
+    }
+
+
+    setTimeout(
+        nextQuestion,
+        1200
+    );
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if(
+        currentQuestion
+        <
+        currentQuiz.length
+    ) {
+
+        showQuestion();
+
+    }
+
+    else {
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+function finishQuiz() {
+
+    document.getElementById(
+        "question"
+    ).innerText =
+        "🎉 Quiz Complete!";
+
+
+    document.getElementById(
+        "answers"
+    ).innerHTML =
+
+        "<h3>" +
+
+        "Score: " +
+
+        score +
+
+        "/" +
+
+        currentQuiz.length +
+
+        "</h3>";
+
+
+    document.getElementById(
+        "feedback"
+    ).innerText =
+
+        "⭐ You earned XP for your correct answers!";
+
+}
+
+</script>
 
 </body>
+
 </html>

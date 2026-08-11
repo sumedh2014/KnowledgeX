@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Knowledge X 🚀</title>
 
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,1186 +17,442 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: #050b16;
     color: white;
-    overflow-x: hidden;
 }
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.space {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #25206b,
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 40%,
-            #064c66,
-            transparent 30%
-        ),
-        #050b16;
-}
-
-.star {
-    position: fixed;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.7;
-    animation: floatStar linear infinite;
-    z-index: -1;
-}
-
-@keyframes floatStar {
-
-    from {
-        transform: translateY(100vh);
-    }
-
-    to {
-        transform: translateY(-10vh);
-    }
-
-}
-
-/* =========================
-   NAVIGATION
-========================= */
 
 nav {
     position: sticky;
     top: 0;
     z-index: 100;
-
+    padding: 18px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding: 18px 7%;
-
-    background: rgba(5, 11, 22, 0.88);
-
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(5,11,22,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #263953;
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: 800;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .logo span {
     color: #00d9ff;
 }
 
-.nav-links {
-    display: flex;
-    gap: 22px;
-}
-
-.nav-links a {
+nav a {
     color: #c9d4e5;
     text-decoration: none;
+    margin-left: 20px;
 }
-
-.nav-links a:hover {
-    color: #00d9ff;
-}
-
-/* =========================
-   HERO
-========================= */
 
 .hero {
-    min-height: 82vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     text-align: center;
-
-    padding: 80px 20px;
-}
-
-.hero-content {
-    max-width: 900px;
-}
-
-.badge {
-    display: inline-block;
-
-    padding: 9px 16px;
-
-    border: 1px solid rgba(0,217,255,0.4);
-
-    background: rgba(0,217,255,0.08);
-
-    border-radius: 50px;
-
-    color: #00d9ff;
-
-    margin-bottom: 25px;
+    padding: 90px 20px;
+    background:
+        radial-gradient(circle at 20% 20%, #29206b, transparent 30%),
+        radial-gradient(circle at 80% 40%, #064c66, transparent 30%);
 }
 
 .hero h1 {
-    font-size: clamp(45px, 8vw, 85px);
-    line-height: 1.05;
+    font-size: clamp(45px, 8vw, 80px);
 }
 
 .gradient {
-    background:
-        linear-gradient(
-            90deg,
-            #7c5cff,
-            #00d9ff,
-            #7c5cff
-        );
-
-    background-size: 200% auto;
-
-    color: transparent;
-    background-clip: text;
-
-    animation: gradientMove 4s linear infinite;
-}
-
-@keyframes gradientMove {
-
-    0% {
-        background-position: 0% center;
-    }
-
-    50% {
-        background-position: 100% center;
-    }
-
-    100% {
-        background-position: 0% center;
-    }
-
+    color: #00d9ff;
 }
 
 .hero p {
-    margin-top: 25px;
-
-    font-size: 20px;
-
+    max-width: 700px;
+    margin: 20px auto;
     color: #aebbd0;
-
+    font-size: 19px;
     line-height: 1.6;
 }
 
-.hero-buttons {
-    margin-top: 35px;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-.button {
+.btn {
     display: inline-block;
-
-    padding: 15px 25px;
-
+    padding: 14px 22px;
+    margin: 8px;
+    border: none;
     border-radius: 12px;
-
+    color: white;
+    background: linear-gradient(90deg,#7c5cff,#00aee0);
+    cursor: pointer;
+    font-weight: bold;
     text-decoration: none;
-
-    font-weight: bold;
-
-    transition: 0.25s;
 }
-
-.primary {
-    color: white;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c5cff,
-            #00aee0
-        );
-}
-
-.secondary {
-    color: white;
-
-    border: 1px solid #34445e;
-
-    background: rgba(255,255,255,0.05);
-}
-
-.button:hover {
-    transform: translateY(-4px);
-}
-
-/* =========================
-   DASHBOARD
-========================= */
-
-.dashboard {
-    padding: 25px 7%;
-}
-
-.dashboard-box {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.stat {
-
-    padding: 25px;
-
-    border-radius: 18px;
-
-    background: rgba(16,34,59,0.75);
-
-    border: 1px solid #263953;
-
-    text-align: center;
-}
-
-.stat-icon {
-    font-size: 30px;
-}
-
-.stat-number {
-    margin-top: 8px;
-
-    font-size: 26px;
-
-    font-weight: bold;
-}
-
-.stat-label {
-    color: #91a1b8;
-
-    margin-top: 5px;
-}
-
-/* =========================
-   SECTIONS
-========================= */
 
 section {
-    padding: 90px 7%;
+    padding: 70px 6%;
 }
 
-.section-title {
-
+.title {
     text-align: center;
-
-    font-size: 42px;
-
-    margin-bottom: 15px;
+    font-size: 38px;
+    margin-bottom: 12px;
 }
 
-.section-description {
-
+.description {
     text-align: center;
-
     color: #91a1b8;
-
     max-width: 700px;
-
-    margin:
-        0 auto 45px;
-
+    margin: 0 auto 35px;
     line-height: 1.6;
 }
 
-/* =========================
-   CLASSES
-========================= */
+/* CLASS SELECTION */
 
-.classes {
-
-    max-width: 1200px;
-
+.class-grid {
+    max-width: 1100px;
     margin: auto;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 20px;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
 }
 
 .class-card {
-
-    padding: 28px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,39,67,0.95),
-            rgba(9,20,37,0.95)
-        );
-
+    padding: 25px;
+    border-radius: 20px;
+    background: #10223b;
     border: 1px solid #263953;
-
-    transition: 0.3s;
-
     cursor: pointer;
+    transition: .25s;
 }
 
-.class-card:hover {
-
-    transform: translateY(-10px);
-
+.class-card:hover,
+.class-card.selected {
+    transform: translateY(-6px);
     border-color: #00d9ff;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,217,255,0.1);
+    box-shadow: 0 0 25px rgba(0,217,255,.15);
 }
 
 .class-icon {
-    font-size: 45px;
-
-    margin-bottom: 18px;
-}
-
-.class-card h3 {
-
-    font-size: 21px;
-
-    margin-bottom: 10px;
+    font-size: 42px;
+    margin-bottom: 12px;
 }
 
 .class-card p {
-
     color: #91a1b8;
-
-    line-height: 1.5;
+    margin-top: 8px;
 }
 
-/* =========================
-   AI QUESTION BOX
-========================= */
-
-.ai-box {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 35px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,39,67,0.95),
-            rgba(9,20,37,0.95)
-        );
-
-    border: 1px solid #263953;
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.25);
-}
-
-.ai-title {
-
-    font-size: 32px;
-
-    font-weight: bold;
-
-    text-align: center;
-}
-
-.ai-subtitle {
-
-    text-align: center;
-
-    color: #91a1b8;
-
-    margin:
-        12px 0 25px;
-}
-
-.search-box {
-
-    display: flex;
-
-    gap: 10px;
-}
-
-.search-box input {
-
-    flex: 1;
-
-    padding: 17px;
-
-    border-radius: 12px;
-
-    border: 1px solid #34445e;
-
-    background: #07111f;
-
-    color: white;
-
-    font-size: 16px;
-
-    outline: none;
-}
-
-.search-box input:focus {
-
-    border-color: #00d9ff;
-}
-
-.search-box button {
-
-    padding: 0 25px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    color: white;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c5cff,
-            #00aee0
-        );
-}
-
-.answer-box {
-
-    margin-top: 20px;
-
+.selected-class {
+    max-width: 800px;
+    margin: 30px auto 0;
     padding: 20px;
-
-    min-height: 80px;
-
+    text-align: center;
     border-radius: 15px;
-
-    background: rgba(255,255,255,0.04);
-
-    border: 1px solid #263953;
-
-    color: #c9d4e5;
-
-    line-height: 1.6;
+    background: #101d31;
+    border: 1px solid #00d9ff;
 }
 
-/* =========================
-   SPELLING GAME
-========================= */
+/* QUIZ */
 
-.spelling-box {
-
-    max-width: 600px;
-
+.quiz-box {
+    max-width: 700px;
     margin: auto;
-
-    padding: 35px;
-
-    text-align: center;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #182c4c,
-            #0d1c31
-        );
-
+    padding: 30px;
+    border-radius: 22px;
+    background: #10223b;
     border: 1px solid #263953;
-}
-
-.spelling-icon {
-
-    font-size: 60px;
-
-    margin-bottom: 15px;
-}
-
-.spelling-box h3 {
-
-    margin-bottom: 20px;
-}
-
-.spell-button,
-.spell-check {
-
-    border: none;
-
-    padding: 13px 20px;
-
-    border-radius: 10px;
-
-    color: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    margin: 5px;
-}
-
-.spell-button {
-
-    background: #7c5cff;
-}
-
-.spell-check {
-
-    background: #008fa8;
-}
-
-#spellingInput {
-
-    display: block;
-
-    width: 100%;
-
-    margin: 20px 0 10px;
-
-    padding: 15px;
-
-    border-radius: 10px;
-
-    border: 1px solid #34445e;
-
-    background: #07111f;
-
-    color: white;
-
-    font-size: 18px;
-
     text-align: center;
-
-    outline: none;
 }
 
-#spellingInput:focus {
-
-    border-color: #00d9ff;
-}
-
-.spelling-result {
-
-    margin-top: 20px;
-
-    color: #c9d4e5;
-
-    font-size: 18px;
-}
-
-/* =========================
-   SPACESHIP
-========================= */
-
-.ship-section {
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(21,38,72,0.35),
-            transparent
-        );
-}
-
-.ship-container {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 40px;
-
-    align-items: center;
-}
-
-.ship-preview {
-
-    min-height: 420px;
-
-    border-radius: 30px;
-
-    border: 1px solid #263953;
-
-    background:
-        radial-gradient(
-            circle,
-            #142d55,
-            #07111f
-        );
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.planet {
-
-    position: absolute;
-
-    width: 140px;
-
-    height: 140px;
-
-    border-radius: 50%;
-
-    background: #4520a8;
-
-    right: -40px;
-
-    top: 30px;
-
-    box-shadow:
-        0 0 50px #4520a8;
-}
-
-.spaceship {
-
-    font-size: 130px;
-
-    animation:
-        shipFloat
-        3s
-        ease-in-out
-        infinite;
-}
-
-@keyframes shipFloat {
-
-    0%, 100% {
-
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
-
-    50% {
-
-        transform:
-            translateY(-18px)
-            rotate(3deg);
-    }
-
-}
-
-.ship-info h2 {
-
-    font-size: 40px;
-
-    margin-bottom: 15px;
-}
-
-.ship-info p {
-
-    color: #9eacc1;
-
-    line-height: 1.6;
-
+.quiz-question {
+    font-size: 22px;
     margin-bottom: 25px;
 }
 
-.parts {
-
+.quiz-options {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
     gap: 12px;
 }
 
-.part {
-
+.quiz-options button {
     padding: 15px;
-
+    border: 1px solid #34445e;
     border-radius: 12px;
+    background: #07111f;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
 
+.quiz-options button:hover {
+    border-color: #00d9ff;
+}
+
+.points {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffd45c;
+}
+
+/* ASK */
+
+.ai-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 25px;
     background: #10223b;
-
     border: 1px solid #263953;
 }
 
-/* =========================
-   SOCIAL
-========================= */
+.search {
+    display: flex;
+    gap: 10px;
+}
+
+.search input {
+    flex: 1;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #34445e;
+    background: #07111f;
+    color: white;
+    font-size: 16px;
+}
+
+.answer {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #07111f;
+    color: #c9d4e5;
+    line-height: 1.6;
+}
+
+/* SPELLING */
+
+.spell-box {
+    max-width: 600px;
+    margin: auto;
+    padding: 35px;
+    text-align: center;
+    border-radius: 25px;
+    background: #10223b;
+    border: 1px solid #263953;
+}
+
+.spell-box input {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0 10px;
+    border-radius: 10px;
+    border: 1px solid #34445e;
+    background: #07111f;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* ROCKET BUILDER */
+
+.builder {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.rocket-area {
+    min-height: 500px;
+    border-radius: 25px;
+    background:
+        radial-gradient(circle,#18375e,#07111f);
+    border: 1px solid #263953;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.rocket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 70px;
+}
+
+.rocket-part {
+    min-width: 170px;
+    min-height: 55px;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #172d4b;
+    border: 2px solid #34445e;
+    text-align: center;
+}
+
+.rocket-tip {
+    font-size: 75px;
+}
+
+.part-list {
+    display: grid;
+    gap: 12px;
+}
+
+.part-button {
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid #34445e;
+    background: #10223b;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.part-button:hover {
+    border-color: #00d9ff;
+}
+
+.part-button.locked {
+    opacity: .5;
+}
+
+.part-status {
+    float: right;
+}
+
+.builder-points {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: #171d35;
+    color: #ffd45c;
+    font-size: 20px;
+}
+
+/* SOCIAL */
 
 .social {
-
-    max-width: 1200px;
-
+    max-width: 900px;
     margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1.5fr 1fr;
-
-    gap: 25px;
+    padding: 30px;
+    border-radius: 22px;
+    background: #10223b;
+    border: 1px solid #263953;
 }
 
 .post {
-
-    padding: 25px;
-
-    background: #10223b;
-
-    border: 1px solid #263953;
-
-    border-radius: 20px;
-}
-
-.post-header {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-}
-
-.avatar {
-
-    width: 45px;
-
-    height: 45px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c5cff,
-            #00d9ff
-        );
+    padding: 20px;
+    border-radius: 15px;
+    background: #07111f;
+    line-height: 1.6;
 }
 
 .post p {
-
-    color: #b0bdd0;
-
-    line-height: 1.5;
+    color: #aebbd0;
 }
 
-.social-side {
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #182c4c,
-            #0d1c31
-        );
-}
-
-.social-side h3 {
-
-    font-size: 25px;
-
-    margin-bottom: 15px;
-}
-
-.social-side p {
-
-    color: #9eacc1;
-
-    line-height: 1.6;
-}
-
-/* =========================
-   VEDAS
-========================= */
+/* VEDAS */
 
 .vedas {
-
     max-width: 900px;
-
     margin: auto;
-
-    padding: 35px;
-
-    border: 1px solid #493b20;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #201b10,
-            #11100c
-        );
-}
-
-.vedas h2 {
-
-    margin-bottom: 15px;
+    padding: 30px;
+    border-radius: 22px;
+    background: #201b10;
+    border: 1px solid #594a28;
 }
 
 .vedas p {
-
-    color: #b9ae91;
-
-    line-height: 1.6;
+    color: #c5b895;
+    line-height: 1.7;
 }
 
-.veda-tags {
-
+.tags {
     display: flex;
-
-    gap: 10px;
-
     flex-wrap: wrap;
-
+    gap: 10px;
     margin-top: 20px;
 }
 
 .tag {
-
-    padding: 9px 14px;
-
+    padding: 10px 15px;
     border-radius: 20px;
-
     background: #30291a;
-
     color: #d6c69d;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer {
-
-    padding: 50px 7%;
-
-    border-top: 1px solid #263953;
-
     text-align: center;
-
+    padding: 50px;
+    border-top: 1px solid #263953;
     color: #8291a7;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 900px) {
-
-    .dashboard-box {
-
-        grid-template-columns:
-            repeat(2, 1fr);
+@media(max-width:900px) {
+    .class-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .classes {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .ship-container {
-
+    .builder {
         grid-template-columns: 1fr;
     }
-
-    .social {
-
-        grid-template-columns: 1fr;
-    }
-
 }
 
-@media (max-width: 600px) {
-
-    .nav-links {
-
+@media(max-width:600px) {
+    nav a {
         display: none;
     }
 
-    .dashboard-box {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .classes {
-
+    .class-grid {
         grid-template-columns: 1fr;
     }
 
-    .search-box {
-
+    .search {
         flex-direction: column;
     }
-
-    .search-box button {
-
-        padding: 15px;
-    }
-
-    .hero {
-
-        min-height: 75vh;
-    }
-
-    .section-title {
-
-        font-size: 32px;
-    }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-
-<div class="space"></div>
-
-<div class="star"
-style="left:5%; animation-duration:12s;"></div>
-
-<div class="star"
-style="left:15%; animation-duration:18s;"></div>
-
-<div class="star"
-style="left:25%; animation-duration:14s;"></div>
-
-<div class="star"
-style="left:40%; animation-duration:20s;"></div>
-
-<div class="star"
-style="left:55%; animation-duration:16s;"></div>
-
-<div class="star"
-style="left:70%; animation-duration:22s;"></div>
-
-<div class="star"
-style="left:82%; animation-duration:13s;"></div>
-
-<div class="star"
-style="left:94%; animation-duration:19s;"></div>
-
-
-<!-- NAVIGATION -->
-
 <nav>
+    <div class="logo">🧠 Knowledge <span>X</span></div>
 
-<div class="logo">
-
-🧠 Knowledge <span>X</span>
-
-</div>
-
-<div class="nav-links">
-
-<a href="#classes">Classes</a>
-
-<a href="#ask">Ask AI</a>
-
-<a href="#spelling">Spelling</a>
-
-<a href="#build">Build</a>
-
-<a href="#social">Social</a>
-
-</div>
-
+    <div>
+        <a href="#classes">Classes</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#ask">Ask</a>
+        <a href="#build">Build</a>
+    </div>
 </nav>
-
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-content">
+    <h1>
+        Learn.
+        <span class="gradient">Create.</span>
+        Explore.
+    </h1>
 
-<div class="badge">
+    <p>
+        Welcome to Knowledge X — a place to learn,
+        test your knowledge, build projects and
+        explore your ideas.
+    </p>
 
-🚀 Welcome to Knowledge X
+    <a href="#classes" class="btn">
+        🎓 Choose Your Class
+    </a>
 
-</div>
-
-<h1>
-
-Learn.
-
-<span class="gradient">
-Create.
-</span>
-
-Explore.
-
-</h1>
-
-<p>
-
-A place where knowledge becomes
-creativity, skills become projects,
-and learning becomes an adventure.
-
-</p>
-
-<div class="hero-buttons">
-
-<a
-href="#classes"
-class="button primary">
-
-Explore Classes
-
-</a>
-
-<a
-href="#build"
-class="button secondary">
-
-🚀 Build Something
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- DASHBOARD -->
-
-<section class="dashboard">
-
-<div class="dashboard-box">
-
-<div class="stat">
-
-<div class="stat-icon">
-📚
-</div>
-
-<div class="stat-number">
-8+
-</div>
-
-<div class="stat-label">
-Learning Areas
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🚀
-</div>
-
-<div class="stat-number">
-∞
-</div>
-
-<div class="stat-label">
-Things To Build
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-👥
-</div>
-
-<div class="stat-number">
-Social
-</div>
-
-<div class="stat-label">
-Learn Together
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🚫
-</div>
-
-<div class="stat-number">
-0
-</div>
-
-<div class="stat-label">
-Ads
-</div>
-
-</div>
-
-</div>
+    <a href="#build" class="btn">
+        🚀 Build Rocket
+    </a>
 
 </section>
 
@@ -1213,227 +461,131 @@ Ads
 
 <section id="classes">
 
-<h2 class="section-title">
+<h2 class="title">🎓 Choose Your Class</h2>
 
-📚 Explore Classes
-
-</h2>
-
-<p class="section-description">
-
-Learn what interests you.
-More subjects and learning paths
-can be added as Knowledge X grows.
-
+<p class="description">
+Choose a subject to start learning.
+Your selected class will be remembered while you use the site.
 </p>
 
-<div class="classes">
+<div class="class-grid">
 
-<div class="class-card">
-
-<div class="class-icon">
-💻
+<div class="class-card" onclick="selectClass(this,'Coding')">
+<div class="class-icon">💻</div>
+<h3>Coding</h3>
+<p>Websites, Python and programming.</p>
 </div>
 
-<h3>
-Coding
-</h3>
+<div class="class-card" onclick="selectClass(this,'Science')">
+<div class="class-icon">🔬</div>
+<h3>Science</h3>
+<p>Physics, Chemistry, Biology and Space.</p>
+</div>
 
-<p>
-Build websites, programs,
-games and useful projects.
+<div class="class-card" onclick="selectClass(this,'Maths')">
+<div class="class-icon">📐</div>
+<h3>Maths</h3>
+<p>Numbers, logic and problem solving.</p>
+</div>
+
+<div class="class-card" onclick="selectClass(this,'English')">
+<div class="class-icon">📖</div>
+<h3>English</h3>
+<p>Grammar, vocabulary and writing.</p>
+</div>
+
+<div class="class-card" onclick="selectClass(this,'AI')">
+<div class="class-icon">🤖</div>
+<h3>Artificial Intelligence</h3>
+<p>Learn how AI works.</p>
+</div>
+
+<div class="class-card" onclick="selectClass(this,'Social Studies')">
+<div class="class-icon">🌍</div>
+<h3>Social Studies</h3>
+<p>History, geography and civics.</p>
+</div>
+
+<div class="class-card" onclick="selectClass(this,'Languages')">
+<div class="class-icon">🌐</div>
+<h3>Languages</h3>
+<p>Explore languages and literature.</p>
+</div>
+
+<div class="class-card" onclick="selectClass(this,'Vedas')">
+<div class="class-icon">🕉️</div>
+<h3>Vedas</h3>
+<p>Sūktas, Sandhi and Sanskrit.</p>
+</div>
+
+</div>
+
+<div id="selectedClass" class="selected-class">
+Choose a class above to begin.
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+<h2 class="title">🧠 Quiz</h2>
+
+<p class="description">
+Answer questions to earn Build Points.
 </p>
 
+<div class="quiz-box">
+
+<div id="quizQuestion" class="quiz-question">
+Choose a class first.
 </div>
 
+<div id="quizOptions" class="quiz-options"></div>
 
-<div class="class-card">
-
-<div class="class-icon">
-🔬
+<div id="quizPoints" class="points">
+⭐ Build Points: 0
 </div>
 
-<h3>
-Science
-</h3>
-
-<p>
-Explore Physics, Chemistry,
-Biology and Space.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-📐
-</div>
-
-<h3>
-Maths
-</h3>
-
-<p>
-Develop problem solving,
-logic and mathematical thinking.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-📖
-</div>
-
-<h3>
-English
-</h3>
-
-<p>
-Improve grammar, vocabulary,
-reading and writing.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-🌍
-</div>
-
-<h3>
-Social Studies
-</h3>
-
-<p>
-Explore history, geography,
-civics and society.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-🤖
-</div>
-
-<h3>
-Artificial Intelligence
-</h3>
-
-<p>
-Understand AI and create
-intelligent projects.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-🌐
-</div>
-
-<h3>
-Regional Languages
-</h3>
-
-<p>
-Explore Indian and world
-languages and literature.
-</p>
-
-</div>
-
-
-<div class="class-card">
-
-<div class="class-icon">
-🕉️
-</div>
-
-<h3>
-Vedas
-</h3>
-
-<p>
-Optional learning including
-Sūktas, Sandhi and Sanskrit.
-</p>
-
-</div>
+<button class="btn" onclick="startQuiz()">
+Start Quiz
+</button>
 
 </div>
 
 </section>
 
 
-<!-- AI -->
+<!-- ASK -->
 
 <section id="ask">
 
-<h2 class="section-title">
+<h2 class="title">🤖 Ask Knowledge X</h2>
 
-🤖 Ask Knowledge X
-
-</h2>
-
-<p class="section-description">
-
-Ask questions and explore ideas.
-The real AI connection will be added
-securely later.
-
+<p class="description">
+Ask anything. This is currently a demo;
+we can connect a real AI backend later.
 </p>
 
 <div class="ai-box">
 
-<div class="ai-title">
-🔎 Ask Anything
-</div>
-
-<p class="ai-subtitle">
-
-"What is gravity?"
-
-"Teach me Python."
-
-"Explain photosynthesis."
-
-</p>
-
-<div class="search-box">
+<div class="search">
 
 <input
-type="text"
 id="questionInput"
 placeholder="Ask Knowledge X anything..."
-onkeydown="handleEnter(event)"
->
+onkeydown="if(event.key==='Enter') askQuestion()">
 
-<button onclick="askKnowledgeX()">
-
+<button class="btn" onclick="askQuestion()">
 🚀 Ask
-
 </button>
 
 </div>
 
-<div
-id="answer"
-class="answer-box">
-
+<div id="answer" class="answer">
 Your answer will appear here.
-
 </div>
 
 </div>
@@ -1443,60 +595,33 @@ Your answer will appear here.
 
 <!-- SPELLING -->
 
-<section id="spelling">
+<section>
 
-<h2 class="section-title">
+<h2 class="title">🔤 Spell the Word</h2>
 
-🔤 Spell the Word
-
-</h2>
-
-<p class="section-description">
-
-Listen to the word and type
-the correct spelling.
-
+<p class="description">
+Listen to a word and type the correct spelling.
 </p>
 
-<div class="spelling-box">
+<div class="spell-box">
 
-<div class="spelling-icon">
-🔊
-</div>
+<div style="font-size:60px">🔊</div>
 
-<h3>
-Listen carefully!
-</h3>
-
-<button
-class="spell-button"
-onclick="speakWord()">
-
-🔊 Hear Word
-
+<button class="btn" onclick="hearWord()">
+Hear Word
 </button>
 
 <input
-id="spellingInput"
-type="text"
+id="spellInput"
 placeholder="Type the spelling..."
-onkeydown="spellingEnter(event)"
->
+onkeydown="if(event.key==='Enter') checkSpelling()">
 
-<button
-class="spell-check"
-onclick="checkSpelling()">
-
+<button class="btn" onclick="checkSpelling()">
 ✅ Check
-
 </button>
 
-<div
-id="spellingResult"
-class="spelling-result">
-
+<div id="spellResult">
 ⭐ Score: 0
-
 </div>
 
 </div>
@@ -1504,88 +629,93 @@ class="spelling-result">
 </section>
 
 
-<!-- SPACESHIP -->
+<!-- ROCKET BUILDER -->
 
-<section id="build" class="ship-section">
+<section id="build">
 
-<h2 class="section-title">
+<h2 class="title">🚀 Build Your Rocket</h2>
 
-🚀 Build Your Spaceship
-
-</h2>
-
-<p class="section-description">
-
-Learn new skills and eventually
-use your achievements to create
-and customize your own spacecraft.
-
+<p class="description">
+Earn Build Points through quizzes and use them
+to unlock rocket parts.
 </p>
 
-<div class="ship-container">
+<div class="builder">
 
-<div class="ship-preview">
+<div class="rocket-area">
 
-<div class="planet"></div>
+<div class="rocket">
 
-<div class="spaceship">
+<div class="rocket-tip">
 🚀
 </div>
 
+<div id="cockpit" class="rocket-part">
+🔒 Cockpit
 </div>
 
-<div class="ship-info">
-
-<h2>
-Your Ship
-</h2>
-
-<p>
-
-Start with a basic spacecraft.
-As Knowledge X grows, you'll be
-able to unlock different parts,
-designs and missions.
-
-</p>
-
-<div class="parts">
-
-<div class="part">
-🛸 Hull
+<div id="hull" class="rocket-part">
+🔒 Hull
 </div>
 
-<div class="part">
+<div id="engine" class="rocket-part">
+🔒 Engine
+</div>
+
+<div id="wings" class="rocket-part">
+🔒 Wings
+</div>
+
+<div id="aiModule" class="rocket-part">
+🔒 AI Module
+</div>
+
+</div>
+
+</div>
+
+
+<div>
+
+<div class="builder-points">
+⭐ Build Points:
+<span id="buildPoints">0</span>
+</div>
+
+<div class="part-list">
+
+<button class="part-button" onclick="togglePart('cockpit',10)">
 🪟 Cockpit
-</div>
+<span id="cockpitStatus" class="part-status">🔒 10</span>
+</button>
 
-<div class="part">
+<button class="part-button" onclick="togglePart('hull',15)">
+🛸 Hull
+<span id="hullStatus" class="part-status">🔒 15</span>
+</button>
+
+<button class="part-button" onclick="togglePart('engine',20)">
 🔥 Engine
-</div>
+<span id="engineStatus" class="part-status">🔒 20</span>
+</button>
 
-<div class="part">
-🧭 Navigation
-</div>
+<button class="part-button" onclick="togglePart('wings',25)">
+🪽 Wings
+<span id="wingsStatus" class="part-status">🔒 25</span>
+</button>
 
-<div class="part">
-📡 Communication
-</div>
-
-<div class="part">
+<button class="part-button" onclick="togglePart('aiModule',30)">
 🤖 AI Module
-</div>
+<span id="aiModuleStatus" class="part-status">🔒 30</span>
+</button>
 
 </div>
 
 <br>
 
-<a
-href="#classes"
-class="button primary">
-
-Keep Learning 🚀
-
-</a>
+<button class="btn" onclick="resetRocket()">
+🔄 Reset Rocket
+</button>
 
 </div>
 
@@ -1596,92 +726,31 @@ Keep Learning 🚀
 
 <!-- SOCIAL -->
 
-<section id="social">
+<section>
 
-<h2 class="section-title">
+<h2 class="title">👥 Social</h2>
 
-👥 Knowledge X Social
-
-</h2>
-
-<p class="section-description">
-
-Share projects, ideas and discoveries
-with other learners.
-
+<p class="description">
+Share ideas and discover what other learners are creating.
 </p>
 
 <div class="social">
 
 <div class="post">
 
-<div class="post-header">
+<strong>🚀 Future Builder</strong>
 
-<div class="avatar">
-🚀
-</div>
-
-<div>
-
-<strong>
-Future Builder
-</strong>
-
-<br>
-
-<small>
-Knowledge X
-</small>
-
-</div>
-
-</div>
+<br><br>
 
 <p>
-
-"I just designed my first spaceship
-concept! Next I'm going to learn
-coding and make it interactive."
-
+I just unlocked my spaceship engine!
+Next I'm learning coding to build an
+interactive control panel.
 </p>
 
 <br>
 
-<span>
-
-❤️ 24 &nbsp;&nbsp;
-💬 8 &nbsp;&nbsp;
-🚀 12
-
-</span>
-
-</div>
-
-
-<div class="social-side">
-
-<h3>
-Build Together
-</h3>
-
-<p>
-
-Learning doesn't have to happen
-alone. Share your projects, ask
-questions and discover what other
-learners are creating.
-
-</p>
-
-<br>
-
-<a
-href="#classes"
-class="button secondary">
-
-Explore & Learn
-
-</a>
+❤️ 24 &nbsp;&nbsp; 💬 8 &nbsp;&nbsp; 🚀 12
 
 </div>
 
@@ -1694,37 +763,23 @@ Explore & Learn
 
 <section>
 
-<div class="vedas" id="vedas">
+<div class="vedas">
 
-<h2>
-🕉️ Vedas — Optional Learning
-</h2>
+<h2>🕉️ Vedas</h2>
+
+<br>
 
 <p>
-
-Explore traditional Sanskrit learning
-at your own choice, including Sūktas,
-Sandhi and other language concepts.
-
+Optional learning resources for learners interested
+in Sanskrit and traditional texts.
 </p>
 
-<div class="veda-tags">
+<div class="tags">
 
-<div class="tag">
-Sūktas
-</div>
-
-<div class="tag">
-Sandhi
-</div>
-
-<div class="tag">
-Sanskrit
-</div>
-
-<div class="tag">
-Grammar
-</div>
+<div class="tag">Sūktas</div>
+<div class="tag">Sandhi</div>
+<div class="tag">Sanskrit</div>
+<div class="tag">Grammar</div>
 
 </div>
 
@@ -1733,15 +788,13 @@ Grammar
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
 🚀 <strong>Knowledge X</strong>
 
 <br><br>
 
-Learn. Create. Explore.
+Learn • Create • Explore
 
 <br><br>
 
@@ -1750,87 +803,242 @@ Learn. Create. Explore.
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
 /* =========================
-   AI DEMO
+   CLASS SELECTION
 ========================= */
 
-function askKnowledgeX() {
+let selectedClass =
+    localStorage.getItem("selectedClass");
+
+if(selectedClass) {
+
+    document.getElementById("selectedClass").innerHTML =
+        "🎓 Current Class: <strong>" +
+        selectedClass +
+        "</strong>";
+
+}
+
+function selectClass(card, className) {
+
+    document.querySelectorAll(".class-card")
+        .forEach(c => c.classList.remove("selected"));
+
+    card.classList.add("selected");
+
+    selectedClass = className;
+
+    localStorage.setItem(
+        "selectedClass",
+        className
+    );
+
+    document.getElementById("selectedClass").innerHTML =
+        "🎓 You selected <strong>" +
+        className +
+        "</strong>! Scroll down and start your quiz.";
+
+    document.getElementById("quizQuestion").innerHTML =
+        "Ready for a " +
+        className +
+        " quiz?";
+
+    document.getElementById("quizOptions").innerHTML = "";
+
+    document.getElementById("quiz").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+let buildPoints =
+    Number(localStorage.getItem("buildPoints")) || 0;
+
+document.getElementById("buildPoints").innerText =
+    buildPoints;
+
+document.getElementById("quizPoints").innerText =
+    "⭐ Build Points: " + buildPoints;
+
+
+const quizzes = {
+
+    Coding: {
+        question: "Which language is used to create webpages?",
+        options: ["HTML","Python","C++","Java"],
+        answer: "HTML"
+    },
+
+    Science: {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth","Mars","Jupiter","Venus"],
+        answer: "Mars"
+    },
+
+    Maths: {
+        question: "What is 12 × 5?",
+        options: ["50","60","70","80"],
+        answer: "60"
+    },
+
+    English: {
+        question: "Which word is a noun?",
+        options: ["Run","Beautiful","School","Quickly"],
+        answer: "School"
+    },
+
+    AI: {
+        question: "What does AI stand for?",
+        options: [
+            "Artificial Intelligence",
+            "Automatic Internet",
+            "Advanced Internet",
+            "Applied Information"
+        ],
+        answer: "Artificial Intelligence"
+    },
+
+    "Social Studies": {
+        question: "Which subject studies maps and places?",
+        options: [
+            "Geography",
+            "Biology",
+            "Physics",
+            "Chemistry"
+        ],
+        answer: "Geography"
+    },
+
+    Languages: {
+        question: "What does a dictionary provide?",
+        options: [
+            "Word meanings",
+            "Only pictures",
+            "Weather",
+            "Maps"
+        ],
+        answer: "Word meanings"
+    },
+
+    Vedas: {
+        question: "What is Sandhi related to?",
+        options: [
+            "Joining of sounds/words",
+            "Astronomy",
+            "Geometry",
+            "Programming"
+        ],
+        answer: "Joining of sounds/words"
+    }
+
+};
+
+function startQuiz() {
+
+    if(!selectedClass) {
+
+        document.getElementById("quizQuestion").innerHTML =
+            "⚠️ Please choose a class first.";
+
+        return;
+    }
+
+    const quiz =
+        quizzes[selectedClass];
+
+    document.getElementById("quizQuestion").innerHTML =
+        quiz.question;
+
+    const options =
+        document.getElementById("quizOptions");
+
+    options.innerHTML = "";
+
+    quiz.options.forEach(option => {
+
+        const button =
+            document.createElement("button");
+
+        button.innerText = option;
+
+        button.onclick = function() {
+
+            if(option === quiz.answer) {
+
+                buildPoints += 5;
+
+                localStorage.setItem(
+                    "buildPoints",
+                    buildPoints
+                );
+
+                document.getElementById("buildPoints").innerText =
+                    buildPoints;
+
+                document.getElementById("quizPoints").innerText =
+                    "🎉 Correct! ⭐ Build Points: " +
+                    buildPoints;
+
+            } else {
+
+                document.getElementById("quizPoints").innerText =
+                    "❌ Try again!";
+
+            }
+
+        };
+
+        options.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================
+   ASK KNOWLEDGE X
+========================= */
+
+function askQuestion() {
 
     const input =
-        document.getElementById(
-            "questionInput"
-        );
+        document.getElementById("questionInput");
 
     const answer =
-        document.getElementById(
-            "answer"
-        );
+        document.getElementById("answer");
 
     const question =
         input.value.trim();
 
-
-    if (question === "") {
+    if(!question) {
 
         answer.innerHTML =
-            "⚠️ Please type a question first.";
+            "⚠️ Please type a question.";
 
         return;
-
     }
-
 
     answer.innerHTML =
         "🤖 Knowledge X is thinking...";
 
-
-    /*
-       TEMPORARY DEMO
-
-       This is NOT connected to a real AI yet.
-       We will connect it securely later.
-    */
-
-    setTimeout(function() {
+    setTimeout(() => {
 
         answer.innerHTML =
-
-            "💡 You asked:<br><br>" +
-
-            "<strong>" +
+            "💡 You asked:<br><br><strong>" +
             escapeHTML(question) +
             "</strong><br><br>" +
+            "The real AI assistant will be connected " +
+            "through a secure backend next. 🚀";
 
-            "The Knowledge X AI assistant "
-            +
-            "will answer this question when "
-            +
-            "the secure AI connection is added. 🚀";
-
-    }, 700);
+    },700);
 
 }
-
-
-function handleEnter(event) {
-
-    if (event.key === "Enter") {
-
-        askKnowledgeX();
-
-    }
-
-}
-
-
-/* Protect the page from HTML typed
-   into the question box */
 
 function escapeHTML(text) {
 
@@ -1840,7 +1048,6 @@ function escapeHTML(text) {
     div.textContent = text;
 
     return div.innerHTML;
-
 }
 
 
@@ -1848,8 +1055,7 @@ function escapeHTML(text) {
    SPELLING GAME
 ========================= */
 
-const spellingWords = [
-
+const words = [
     "knowledge",
     "science",
     "computer",
@@ -1860,139 +1066,204 @@ const spellingWords = [
     "spaceship",
     "discovery",
     "technology"
-
 ];
 
+let currentWord =
+    words[Math.floor(Math.random()*words.length)];
 
 let spellingScore = 0;
 
-let currentWord = "";
+function hearWord() {
 
-
-/* Choose random word */
-
-function newSpellingWord() {
-
-    const randomIndex =
-        Math.floor(
-            Math.random() *
-            spellingWords.length
-        );
-
-    currentWord =
-        spellingWords[randomIndex];
-
-}
-
-
-/* Hear word */
-
-function speakWord() {
-
-    if (currentWord === "") {
-
-        newSpellingWord();
-
-    }
+    speechSynthesis.cancel();
 
     const speech =
         new SpeechSynthesisUtterance(
             currentWord
         );
 
-    speech.rate = 0.8;
+    speech.rate = .8;
 
-    speech.pitch = 1;
-
-    window.speechSynthesis.speak(
-        speech
-    );
-
+    speechSynthesis.speak(speech);
 }
-
-
-/* Check spelling */
 
 function checkSpelling() {
 
     const input =
-        document.getElementById(
-            "spellingInput"
-        );
+        document.getElementById("spellInput");
 
     const result =
-        document.getElementById(
-            "spellingResult"
-        );
+        document.getElementById("spellResult");
 
-    const answer =
-        input.value
-            .trim()
-            .toLowerCase();
-
-
-    if (answer === "") {
-
-        result.innerHTML =
-            "✏️ Type the word first.";
-
-        return;
-
-    }
-
-
-    if (answer === currentWord) {
+    if(input.value.trim().toLowerCase() === currentWord) {
 
         spellingScore++;
 
         result.innerHTML =
-
             "🎉 Correct! ⭐ Score: " +
-
             spellingScore;
-
 
         input.value = "";
 
-        newSpellingWord();
+        currentWord =
+            words[
+                Math.floor(
+                    Math.random()*words.length
+                )
+            ];
 
+        setTimeout(hearWord,500);
 
-        setTimeout(
-            speakWord,
-            500
-        );
-
-    }
-
-    else {
+    } else {
 
         result.innerHTML =
-
-            "❌ Not quite. Try again!";
-
+            "❌ Try again!";
     }
-
 }
 
 
-function spellingEnter(event) {
+/* =========================
+   ROCKET BUILDER
+========================= */
 
-    if (event.key === "Enter") {
+let rocketParts =
+    JSON.parse(
+        localStorage.getItem("rocketParts")
+    ) || {};
 
-        checkSpelling();
+function updateRocket() {
 
-    }
+    const parts = [
+        "cockpit",
+        "hull",
+        "engine",
+        "wings",
+        "aiModule"
+    ];
+
+    parts.forEach(part => {
+
+        const element =
+            document.getElementById(part);
+
+        const status =
+            document.getElementById(
+                part + "Status"
+            );
+
+        if(rocketParts[part]) {
+
+            const icons = {
+
+                cockpit: "🪟 Cockpit",
+                hull: "🛸 Hull",
+                engine: "🔥 Engine",
+                wings: "🪽 Wings",
+                aiModule: "🤖 AI Module"
+
+            };
+
+            element.innerText =
+                icons[part];
+
+            element.style.borderColor =
+                "#00d9ff";
+
+            status.innerText =
+                "✅ Added";
+
+        } else {
+
+            const names = {
+
+                cockpit: "🔒 Cockpit",
+                hull: "🔒 Hull",
+                engine: "🔒 Engine",
+                wings: "🔒 Wings",
+                aiModule: "🔒 AI Module"
+
+            };
+
+            element.innerText =
+                names[part];
+
+            element.style.borderColor =
+                "#34445e";
+
+            status.innerText =
+                "🔒";
+        }
+
+    });
 
 }
 
+function togglePart(part,cost) {
 
-/* Start spelling game */
+    if(rocketParts[part]) {
 
-newSpellingWord();
+        delete rocketParts[part];
+
+        localStorage.setItem(
+            "rocketParts",
+            JSON.stringify(rocketParts)
+        );
+
+        updateRocket();
+
+        return;
+    }
+
+    if(buildPoints < cost) {
+
+        alert(
+            "You need " +
+            cost +
+            " Build Points to unlock this part.\n\n" +
+            "Earn points by completing quizzes!"
+        );
+
+        return;
+    }
+
+    buildPoints -= cost;
+
+    localStorage.setItem(
+        "buildPoints",
+        buildPoints
+    );
+
+    rocketParts[part] = true;
+
+    localStorage.setItem(
+        "rocketParts",
+        JSON.stringify(rocketParts)
+    );
+
+    document.getElementById("buildPoints").innerText =
+        buildPoints;
+
+    document.getElementById("quizPoints").innerText =
+        "⭐ Build Points: " + buildPoints;
+
+    updateRocket();
+}
+
+function resetRocket() {
+
+    rocketParts = {};
+
+    localStorage.setItem(
+        "rocketParts",
+        JSON.stringify(rocketParts)
+    );
+
+    updateRocket();
+}
+
+updateRocket();
 
 </script>
 
-
 </body>
-
 </html>

@@ -1,45 +1,2877 @@
-function askQuestion() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    const question =
-        document.getElementById("questionInput")
-        .value
-        .toLowerCase()
-        .trim();
+<title>Knowledge X 🚀</title>
 
-    const answer =
-        document.getElementById("answer");
+<style>
 
-    if (!question) {
-        answer.innerHTML =
-            "⚠️ Please type a question.";
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050b16;
+    color: white;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 6%;
+
+    background: rgba(5,11,22,0.95);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid #263953;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00d9ff;
+}
+
+nav a {
+    color: #c9d4e5;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    color: #00d9ff;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+
+    background:
+        radial-gradient(circle at 20% 20%, #29206b, transparent 30%),
+        radial-gradient(circle at 80% 40%, #064c66, transparent 30%);
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 80px);
+}
+
+.gradient {
+    color: #00d9ff;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 20px auto;
+
+    color: #aebbd0;
+
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 14px 22px;
+    margin: 8px;
+
+    border: none;
+    border-radius: 12px;
+
+    color: white;
+
+    background: linear-gradient(
+        90deg,
+        #7c5cff,
+        #00aee0
+    );
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* SECTIONS */
+
+section {
+    padding: 70px 6%;
+}
+
+.title {
+    text-align: center;
+
+    font-size: 38px;
+
+    margin-bottom: 12px;
+}
+
+.description {
+    text-align: center;
+
+    color: #91a1b8;
+
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    line-height: 1.6;
+}
+
+/* CLASS CARDS */
+
+.class-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.class-card {
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.class-card:hover,
+.class-card.selected {
+
+    transform: translateY(-6px);
+
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,217,255,0.15);
+}
+
+.class-icon {
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+.class-card p {
+    color: #91a1b8;
+
+    margin-top: 8px;
+}
+
+.selected-class {
+
+    max-width: 800px;
+
+    margin: 30px auto 0;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    background: #101d31;
+
+    border: 1px solid #00d9ff;
+}
+
+/* QUIZ */
+
+.quiz-box {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+
+    text-align: center;
+}
+
+.quiz-question {
+
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+.quiz-options {
+
+    display: grid;
+
+    gap: 12px;
+}
+
+.quiz-options button {
+
+    padding: 15px;
+
+    border: 1px solid #34445e;
+
+    border-radius: 12px;
+
+    background: #07111f;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.quiz-options button:hover:not(:disabled) {
+
+    border-color: #00d9ff;
+}
+
+.quiz-options button:disabled {
+
+    cursor: not-allowed;
+}
+
+.points {
+
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    color: #ffd45c;
+}
+
+/* ASK KNOWLEDGE X */
+
+.ai-box {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+}
+
+.search {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.search input {
+
+    flex: 1;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid #34445e;
+
+    background: #07111f;
+
+    color: white;
+
+    font-size: 16px;
+}
+
+.answer {
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #07111f;
+
+    color: #c9d4e5;
+
+    line-height: 1.7;
+}
+
+/* SPELL */
+
+.spell-box {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+}
+
+.spell-box input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 20px 0 10px;
+
+    border-radius: 10px;
+
+    border: 1px solid #34445e;
+
+    background: #07111f;
+
+    color: white;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+/* ROCKET */
+
+.builder {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.rocket-area {
+
+    min-height: 500px;
+
+    border-radius: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            #18375e,
+            #07111f
+        );
+
+    border: 1px solid #263953;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.rocket {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.rocket-tip {
+
+    font-size: 75px;
+}
+
+.rocket-part {
+
+    min-width: 180px;
+
+    min-height: 55px;
+
+    margin: 3px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: #172d4b;
+
+    border: 2px solid #34445e;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.part-list {
+
+    display: grid;
+
+    gap: 12px;
+}
+
+.builder-points {
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    background: #171d35;
+
+    color: #ffd45c;
+
+    font-size: 20px;
+}
+
+.part-button {
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid #34445e;
+
+    background: #10223b;
+
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+.part-button:hover {
+
+    border-color: #00d9ff;
+}
+
+.part-status {
+
+    float: right;
+}
+
+/* SOCIAL */
+
+.social {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: #10223b;
+
+    border: 1px solid #263953;
+}
+
+.post {
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: #07111f;
+
+    line-height: 1.6;
+}
+
+.post p {
+
+    color: #aebbd0;
+}
+
+/* VEDAS */
+
+.vedas {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: #201b10;
+
+    border: 1px solid #594a28;
+}
+
+.vedas p {
+
+    color: #c5b895;
+
+    line-height: 1.7;
+}
+
+.tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.tag {
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    background: #30291a;
+
+    color: #d6c69d;
+}
+
+/* FOOTER */
+
+footer {
+
+    text-align: center;
+
+    padding: 50px;
+
+    border-top: 1px solid #263953;
+
+    color: #8291a7;
+}
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .class-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .builder {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:600px) {
+
+    nav a {
+
+        display: none;
+    }
+
+    .class-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .search {
+
+        flex-direction: column;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        🧠 Knowledge <span>X</span>
+    </div>
+
+    <div>
+
+        <a href="#classes">
+            Classes
+        </a>
+
+        <a href="#quiz">
+            Quiz
+        </a>
+
+        <a href="#ask">
+            Ask
+        </a>
+
+        <a href="#build">
+            Build
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        Learn.
+        <span class="gradient">
+            Create.
+        </span>
+        Explore.
+    </h1>
+
+    <p>
+
+        Welcome to Knowledge X —
+        a place to learn, test your knowledge,
+        ask questions and build your own spaceship.
+
+    </p>
+
+    <a
+        href="#classes"
+        class="btn"
+    >
+        🎓 Choose Your Class
+    </a>
+
+    <a
+        href="#build"
+        class="btn"
+    >
+        🚀 Build Rocket
+    </a>
+
+</section>
+
+
+<!-- CLASS SELECTION -->
+
+<section id="classes">
+
+<h2 class="title">
+
+    🏫 Choose Your Class
+
+</h2>
+
+<p class="description">
+
+    Select a subject to begin your
+    Knowledge X journey.
+
+</p>
+
+
+<div class="class-grid">
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Coding')"
+>
+
+    <div class="class-icon">
+        💻
+    </div>
+
+    <h3>
+        Coding
+    </h3>
+
+    <p>
+        Programming, websites and apps.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Science')"
+>
+
+    <div class="class-icon">
+        🔬
+    </div>
+
+    <h3>
+        Science
+    </h3>
+
+    <p>
+        Physics, Chemistry, Biology and Space.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Maths')"
+>
+
+    <div class="class-icon">
+        📐
+    </div>
+
+    <h3>
+        Maths
+    </h3>
+
+    <p>
+        Numbers and problem solving.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'English')"
+>
+
+    <div class="class-icon">
+        📖
+    </div>
+
+    <h3>
+        English
+    </h3>
+
+    <p>
+        Grammar and vocabulary.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Social Studies')"
+>
+
+    <div class="class-icon">
+        🌍
+    </div>
+
+    <h3>
+        Social Studies
+    </h3>
+
+    <p>
+        History, geography and civics.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'AI')"
+>
+
+    <div class="class-icon">
+        🤖
+    </div>
+
+    <h3>
+        AI
+    </h3>
+
+    <p>
+        Artificial intelligence and technology.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Languages')"
+>
+
+    <div class="class-icon">
+        🌐
+    </div>
+
+    <h3>
+        Languages
+    </h3>
+
+    <p>
+        Languages and literature.
+    </p>
+
+</div>
+
+
+<div
+    class="class-card"
+    onclick="selectClass(this,'Vedas')"
+>
+
+    <div class="class-icon">
+        🕉️
+    </div>
+
+    <h3>
+        Vedas
+    </h3>
+
+    <p>
+        Sūktas, Sandhi and Sanskrit.
+    </p>
+
+</div>
+
+
+</div>
+
+
+<div
+    id="selectedClass"
+    class="selected-class"
+>
+
+    👆 Select a class to continue.
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+<h2 class="title">
+
+    🧠 Quiz
+
+</h2>
+
+<p class="description">
+
+    Answer correctly to earn
+    ⭐ Build Points.
+
+</p>
+
+
+<div class="quiz-box">
+
+    <div
+        id="quizQuestion"
+        class="quiz-question"
+    >
+
+        Choose a class first.
+
+    </div>
+
+
+    <div
+        id="quizOptions"
+        class="quiz-options"
+    >
+
+    </div>
+
+
+    <div
+        id="quizPoints"
+        class="points"
+    >
+
+        ⭐ Build Points: 0
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="startQuiz()"
+    >
+
+        ▶️ Start Quiz
+
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- ASK KNOWLEDGE X -->
+
+<section id="ask">
+
+<h2 class="title">
+
+    🔎 Ask Knowledge X
+
+</h2>
+
+<p class="description">
+
+    Ask a question and Knowledge X
+    will search its built-in knowledge.
+
+</p>
+
+
+<div class="ai-box">
+
+    <div class="search">
+
+        <input
+            id="questionInput"
+            placeholder="Ask something..."
+            onkeydown="
+                if(event.key==='Enter')
+                askQuestion()
+            "
+        >
+
+        <button
+            class="btn"
+            onclick="askQuestion()"
+        >
+
+            🔎 Ask
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="answer"
+        class="answer"
+    >
+
+        💡 Ask me a question!
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SPELL THE WORD -->
+
+<section>
+
+<h2 class="title">
+
+    🔤 Spell the Word
+
+</h2>
+
+<p class="description">
+
+    Listen to a word and spell it correctly.
+
+</p>
+
+
+<div class="spell-box">
+
+    <div
+        style="font-size:60px"
+    >
+        🔊
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="hearWord()"
+    >
+
+        🔊 Hear Word
+
+    </button>
+
+
+    <input
+        id="spellInput"
+        placeholder="Type the spelling..."
+        onkeydown="
+            if(event.key==='Enter')
+            checkSpelling()
+        "
+    >
+
+
+    <button
+        class="btn"
+        onclick="checkSpelling()"
+    >
+
+        ✅ Check
+
+    </button>
+
+
+    <div id="spellResult">
+
+        ⭐ Score: 0
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ROCKET BUILDER -->
+
+<section id="build">
+
+<h2 class="title">
+
+    🚀 Build Your Spaceship
+
+</h2>
+
+<p class="description">
+
+    Earn Build Points through quizzes
+    and use them to build your spaceship.
+
+</p>
+
+
+<div class="builder">
+
+
+<!-- ROCKET DISPLAY -->
+
+<div class="rocket-area">
+
+<div class="rocket">
+
+    <div class="rocket-tip">
+        🚀
+    </div>
+
+
+    <div
+        id="cockpit"
+        class="rocket-part"
+    >
+        🔒 Cockpit
+    </div>
+
+
+    <div
+        id="hull"
+        class="rocket-part"
+    >
+        🔒 Hull
+    </div>
+
+
+    <div
+        id="engine"
+        class="rocket-part"
+    >
+        🔒 Engine
+    </div>
+
+
+    <div
+        id="wings"
+        class="rocket-part"
+    >
+        🔒 Wings
+    </div>
+
+
+    <div
+        id="aiModule"
+        class="rocket-part"
+    >
+        🔒 AI Module
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- PARTS -->
+
+<div>
+
+<div class="builder-points">
+
+    ⭐ Build Points:
+
+    <span id="buildPoints">
+        0
+    </span>
+
+</div>
+
+
+<div class="part-list">
+
+
+<button
+    class="part-button"
+    onclick="togglePart('cockpit',10)"
+>
+
+    🪟 Cockpit
+
+    <span
+        id="cockpitStatus"
+        class="part-status"
+    >
+        🔒 10
+    </span>
+
+</button>
+
+
+<button
+    class="part-button"
+    onclick="togglePart('hull',15)"
+>
+
+    🛸 Hull
+
+    <span
+        id="hullStatus"
+        class="part-status"
+    >
+        🔒 15
+    </span>
+
+</button>
+
+
+<button
+    class="part-button"
+    onclick="togglePart('engine',20)"
+>
+
+    🔥 Engine
+
+    <span
+        id="engineStatus"
+        class="part-status"
+    >
+        🔒 20
+    </span>
+
+</button>
+
+
+<button
+    class="part-button"
+    onclick="togglePart('wings',25)"
+>
+
+    🪽 Wings
+
+    <span
+        id="wingsStatus"
+        class="part-status"
+    >
+        🔒 25
+    </span>
+
+</button>
+
+
+<button
+    class="part-button"
+    onclick="togglePart('aiModule',30)"
+>
+
+    🤖 AI Module
+
+    <span
+        id="aiModuleStatus"
+        class="part-status"
+    >
+        🔒 30
+    </span>
+
+</button>
+
+
+</div>
+
+
+<button
+    class="btn"
+    onclick="resetRocket()"
+>
+
+    🔄 Reset Rocket
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SOCIAL -->
+
+<section>
+
+<h2 class="title">
+
+    👥 Social
+
+</h2>
+
+<p class="description">
+
+    Share what you're learning
+    and building.
+
+</p>
+
+
+<div class="social">
+
+<div class="post">
+
+    <strong>
+        🚀 Future Builder
+    </strong>
+
+    <br><br>
+
+    <p>
+
+        I just unlocked my spaceship
+        engine! Now I'm learning coding
+        to build a control panel.
+
+    </p>
+
+    <br>
+
+    ❤️ 24
+    &nbsp;&nbsp;
+    💬 8
+    &nbsp;&nbsp;
+    🚀 12
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VEDAS -->
+
+<section>
+
+<div class="vedas">
+
+<h2>
+    🕉️ Vedas
+</h2>
+
+<br>
+
+<p>
+
+    Optional learning resources for
+    learners interested in Sanskrit
+    and Vedic studies.
+
+</p>
+
+
+<div class="tags">
+
+    <div class="tag">
+        Sūktas
+    </div>
+
+    <div class="tag">
+        Sandhi
+    </div>
+
+    <div class="tag">
+        Sanskrit
+    </div>
+
+    <div class="tag">
+        Grammar
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    🚀 <strong>Knowledge X</strong>
+
+    <br><br>
+
+    Learn • Create • Explore
+
+    <br><br>
+
+    🚫 No Ads
+
+</footer>
+
+
+<script>
+
+
+/* ==========================================
+   CLASS SELECTION
+========================================== */
+
+let selectedClass =
+    localStorage.getItem("selectedClass") || "";
+
+
+function selectClass(card, className) {
+
+    document
+        .querySelectorAll(".class-card")
+        .forEach(card => {
+
+            card.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    card.classList.add("selected");
+
+
+    selectedClass =
+        className;
+
+
+    localStorage.setItem(
+        "selectedClass",
+        className
+    );
+
+
+    document.getElementById(
+        "selectedClass"
+    ).innerHTML =
+
+        "🎓 You selected <strong>" +
+        className +
+        "</strong>!";
+
+
+    document.getElementById(
+        "quizQuestion"
+    ).innerHTML =
+
+        "Ready for your " +
+        className +
+        " quiz?";
+
+
+    document.getElementById(
+        "quizOptions"
+    ).innerHTML = "";
+
+}
+
+
+/* ==========================================
+   POINTS
+========================================== */
+
+let buildPoints =
+    Number(
+        localStorage.getItem(
+            "buildPoints"
+        )
+    ) || 0;
+
+
+function updatePoints() {
+
+    document.getElementById(
+        "buildPoints"
+    ).innerText =
+        buildPoints;
+
+
+    document.getElementById(
+        "quizPoints"
+    ).innerText =
+
+        "⭐ Build Points: " +
+        buildPoints;
+
+
+    localStorage.setItem(
+        "buildPoints",
+        buildPoints
+    );
+
+}
+
+
+updatePoints();
+
+
+/* ==========================================
+   QUIZ DATABASE
+========================================== */
+
+const quizData = {
+
+
+Coding: [
+
+{
+question:
+"Which language is used to structure a webpage?",
+
+options:
+[
+"HTML",
+"Python",
+"C++",
+"Java"
+],
+
+answer:
+"HTML"
+},
+
+{
+question:
+"Which language is mainly used to style webpages?",
+
+options:
+[
+"CSS",
+"Python",
+"C",
+"SQL"
+],
+
+answer:
+"CSS"
+},
+
+{
+question:
+"Which language makes webpages interactive?",
+
+options:
+[
+"JavaScript",
+"HTML",
+"CSS",
+"XML"
+],
+
+answer:
+"JavaScript"
+}
+
+],
+
+
+Science: [
+
+{
+question:
+"Which planet is known as the Red Planet?",
+
+options:
+[
+"Earth",
+"Mars",
+"Jupiter",
+"Venus"
+],
+
+answer:
+"Mars"
+},
+
+{
+question:
+"What gas do humans need to breathe?",
+
+options:
+[
+"Oxygen",
+"Helium",
+"Hydrogen",
+"Carbon dioxide"
+],
+
+answer:
+"Oxygen"
+},
+
+{
+question:
+"What force pulls objects toward Earth?",
+
+options:
+[
+"Gravity",
+"Friction",
+"Magnetism",
+"Electricity"
+],
+
+answer:
+"Gravity"
+}
+
+],
+
+
+Maths: [
+
+{
+question:
+"What is 12 × 5?",
+
+options:
+[
+"50",
+"60",
+"70",
+"80"
+],
+
+answer:
+"60"
+},
+
+{
+question:
+"What is 100 ÷ 4?",
+
+options:
+[
+"20",
+"25",
+"30",
+"40"
+],
+
+answer:
+"25"
+},
+
+{
+question:
+"What is 15 + 27?",
+
+options:
+[
+"32",
+"40",
+"42",
+"52"
+],
+
+answer:
+"42"
+}
+
+],
+
+
+English: [
+
+{
+question:
+"Which word is a noun?",
+
+options:
+[
+"Run",
+"Beautiful",
+"School",
+"Quickly"
+],
+
+answer:
+"School"
+},
+
+{
+question:
+"What is the opposite of ancient?",
+
+options:
+[
+"Old",
+"Modern",
+"Historic",
+"Past"
+],
+
+answer:
+"Modern"
+},
+
+{
+question:
+"Which word is a verb?",
+
+options:
+[
+"Jump",
+"Blue",
+"Table",
+"Happy"
+],
+
+answer:
+"Jump"
+}
+
+],
+
+
+"Social Studies": [
+
+{
+question:
+"Which subject studies maps and places?",
+
+options:
+[
+"Geography",
+"Biology",
+"Physics",
+"Chemistry"
+],
+
+answer:
+"Geography"
+},
+
+{
+question:
+"Which is a continent?",
+
+options:
+[
+"India",
+"Asia",
+"Pacific",
+"Nile"
+],
+
+answer:
+"Asia"
+},
+
+{
+question:
+"Which subject studies past events?",
+
+options:
+[
+"History",
+"Physics",
+"Geometry",
+"Biology"
+],
+
+answer:
+"History"
+}
+
+],
+
+
+AI: [
+
+{
+question:
+"What does AI stand for?",
+
+options:
+[
+"Artificial Intelligence",
+"Automatic Internet",
+"Advanced Internet",
+"Applied Information"
+],
+
+answer:
+"Artificial Intelligence"
+},
+
+{
+question:
+"What does ML usually mean?",
+
+options:
+[
+"Machine Learning",
+"Mega Language",
+"Modern Logic",
+"Main Link"
+],
+
+answer:
+"Machine Learning"
+},
+
+{
+question:
+"Which technology can generate text from prompts?",
+
+options:
+[
+"Generative AI",
+"Calculator",
+"Printer",
+"Keyboard"
+],
+
+answer:
+"Generative AI"
+}
+
+],
+
+
+Languages: [
+
+{
+question:
+"What does a dictionary usually provide?",
+
+options:
+[
+"Word meanings",
+"Weather",
+"Maps",
+"Music"
+],
+
+answer:
+"Word meanings"
+},
+
+{
+question:
+"What is grammar?",
+
+options:
+[
+"Rules of a language",
+"A type of food",
+"A computer",
+"A map"
+],
+
+answer:
+"Rules of a language"
+},
+
+{
+question:
+"Which of these is a language?",
+
+options:
+[
+"Sanskrit",
+"Grammar",
+"Dictionary",
+"Sentence"
+],
+
+answer:
+"Sanskrit"
+}
+
+],
+
+
+Vedas: [
+
+{
+question:
+"Sandhi is mainly related to what?",
+
+options:
+[
+"Joining of sounds or words",
+"Astronomy",
+"Geometry",
+"Programming"
+],
+
+answer:
+"Joining of sounds or words"
+},
+
+{
+question:
+"What is a Sūkta?",
+
+options:
+[
+"A hymn",
+"A number",
+"A planet",
+"A programming language"
+],
+
+answer:
+"A hymn"
+},
+
+{
+question:
+"Which language is central to many Vedic texts?",
+
+options:
+[
+"Sanskrit",
+"French",
+"Spanish",
+"Japanese"
+],
+
+answer:
+"Sanskrit"
+}
+
+]
+
+};
+
+
+/* ==========================================
+   QUIZ SYSTEM
+========================================== */
+
+let quizIndex = 0;
+
+let currentQuestion = null;
+
+let questionAnswered = false;
+
+
+function startQuiz() {
+
+    if (!selectedClass) {
+
+        document.getElementById(
+            "quizQuestion"
+        ).innerHTML =
+
+            "⚠️ Please choose a class first.";
+
         return;
     }
 
-    if (question.includes("photosynthesis")) {
 
-        answer.innerHTML =
-            "🌱 Photosynthesis is the process " +
-            "by which green plants use sunlight, " +
-            "water and carbon dioxide to make food.";
+    quizIndex = 0;
 
-    } else if (question.includes("gravity")) {
+    showQuestion();
 
-        answer.innerHTML =
-            "🌍 Gravity is the force that attracts " +
-            "objects toward one another. Earth's " +
-            "gravity pulls objects toward its surface.";
-
-    } else if (question.includes("ai")) {
-
-        answer.innerHTML =
-            "🤖 AI means Artificial Intelligence. " +
-            "It allows computers to perform tasks " +
-            "that normally require human intelligence.";
-
-    } else {
-
-        answer.innerHTML =
-            "🔎 I don't have that answer in my " +
-            "offline Knowledge X database yet.";
-    }
 }
+
+
+function showQuestion() {
+
+    const questions =
+        quizData[selectedClass];
+
+
+    if (!questions) {
+
+        return;
+
+    }
+
+
+    currentQuestion =
+        questions[
+            quizIndex %
+            questions.length
+        ];
+
+
+    questionAnswered = false;
+
+
+    document.getElementById(
+        "quizQuestion"
+    ).innerHTML =
+
+        currentQuestion.question;
+
+
+    const options =
+        document.getElementById(
+            "quizOptions"
+        );
+
+
+    options.innerHTML = "";
+
+
+    currentQuestion.options
+        .forEach(option => {
+
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.innerText =
+            option;
+
+
+        button.onclick =
+            function() {
+
+                answerQuestion(
+                    option,
+                    button
+                );
+
+            };
+
+
+        options.appendChild(
+            button
+        );
+
+    });
+
+
+    document.getElementById(
+        "quizPoints"
+    ).innerText =
+
+        "⭐ Build Points: " +
+        buildPoints;
+
+}
+
+
+function answerQuestion(
+    selectedAnswer,
+    clickedButton
+) {
+
+
+    /* PREVENT DOUBLE POINTS */
+
+    if (questionAnswered) {
+
+        return;
+
+    }
+
+
+    questionAnswered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            "#quizOptions button"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
+        button.style.opacity =
+            "0.6";
+
+    });
+
+
+    if (
+        selectedAnswer ===
+        currentQuestion.answer
+    ) {
+
+
+        /* ONLY +5 */
+
+        buildPoints += 5;
+
+
+        updatePoints();
+
+
+        clickedButton.style.borderColor =
+            "#00ff99";
+
+        clickedButton.style.opacity =
+            "1";
+
+
+        document.getElementById(
+            "quizPoints"
+        ).innerHTML =
+
+            "🎉 Correct! +5 Build Points<br>" +
+            "⭐ Total: " +
+            buildPoints;
+
+    }
+
+    else {
+
+
+        clickedButton.style.borderColor =
+            "#ff4d6d";
+
+        clickedButton.style.opacity =
+            "1";
+
+
+        document.getElementById(
+            "quizPoints"
+        ).innerHTML =
+
+            "❌ Incorrect!<br>" +
+            "Correct answer: <strong>" +
+            currentQuestion.answer +
+            "</strong><br>" +
+            "⭐ Total: " +
+            buildPoints;
+
+    }
+
+
+    const nextButton =
+        document.createElement(
+            "button"
+        );
+
+
+    nextButton.className =
+        "btn";
+
+
+    nextButton.innerText =
+        "➡️ Next Question";
+
+
+    nextButton.onclick =
+        function() {
+
+            quizIndex++;
+
+            showQuestion();
+
+        };
+
+
+    document.getElementById(
+        "quizOptions"
+    ).appendChild(
+        nextButton
+    );
+
+}
+
+
+/* ==========================================
+   ASK KNOWLEDGE X
+========================================== */
+
+function askQuestion() {
+
+    const input =
+        document.getElementById(
+            "questionInput"
+        );
+
+
+    const answer =
+        document.getElementById(
+            "answer"
+        );
+
+
+    const question =
+        input.value
+            .trim()
+            .toLowerCase();
+
+
+    if (!question) {
+
+        answer.innerHTML =
+            "⚠️ Please type a question.";
+
+        return;
+
+    }
+
+
+    let response = "";
+
+
+    /* PHOTOSYNTHESIS */
+
+    if (
+        question.includes(
+            "photosynthesis"
+        ) ||
+        question.includes(
+            "how do plants make food"
+        )
+    ) {
+
+        response =
+            "🌱 <b>Photosynthesis</b><br><br>" +
+
+            "Photosynthesis is the process " +
+            "by which green plants make food " +
+            "using sunlight, water and carbon dioxide. " +
+
+            "<br><br>" +
+
+            "Oxygen is released during the process.";
+
+    }
+
+
+    /* GRAVITY */
+
+    else if (
+        question.includes(
+            "gravity"
+        )
+    ) {
+
+        response =
+            "🌍 <b>Gravity</b><br><br>" +
+
+            "Gravity is a force that attracts " +
+            "objects toward one another. " +
+
+            "<br><br>" +
+
+            "Earth's gravity pulls objects " +
+            "toward the ground.";
+
+    }
+
+
+    /* AI */
+
+    else if (
+        question.includes("ai") ||
+        question.includes(
+            "artificial intelligence"
+        )
+    ) {
+
+        response =
+            "🤖 <b>Artificial Intelligence</b><br><br>" +
+
+            "AI is technology that allows " +
+            "computers to perform tasks that " +
+            "normally require human intelligence.";
+
+    }
+
+
+    /* SUN */
+
+    else if (
+        question.includes("sun")
+    ) {
+
+        response =
+            "☀️ <b>The Sun</b><br><br>" +
+
+            "The Sun is a star at the center " +
+            "of our Solar System. " +
+
+            "<br><br>" +
+
+            "It provides Earth with light and heat.";
+
+    }
+
+
+    /* MOON */
+
+    else if (
+        question.includes("moon")
+    ) {
+
+        response =
+            "🌙 <b>The Moon</b><br><br>" +
+
+            "The Moon is Earth's natural satellite. " +
+
+            "<br><br>" +
+
+            "It orbits Earth.";
+
+    }
+
+
+    /* EARTH */
+
+    else if (
+        question.includes("earth")
+    ) {
+
+        response =
+            "🌍 <b>Earth</b><br><br>" +
+
+            "Earth is the third planet from the Sun. " +
+
+            "It is the planet where we live.";
+
+    }
+
+
+    /* PLANETS */
+
+    else if (
+        question.includes("planet")
+    ) {
+
+        response =
+            "🪐 <b>Planets</b><br><br>" +
+
+            "Our Solar System has eight planets:" +
+
+            "<br><br>" +
+
+            "Mercury, Venus, Earth, Mars, " +
+            "Jupiter, Saturn, Uranus and Neptune.";
+
+    }
+
+
+    /* HTML */
+
+    else if (
+        question.includes("html")
+    ) {
+
+        response =
+            "💻 <b>HTML</b><br><br>" +
+
+            "HTML stands for HyperText Markup Language. " +
+
+            "<br><br>" +
+
+            "It is used to structure webpages.";
+
+    }
+
+
+    /* CSS */
+
+    else if (
+        question.includes("css")
+    ) {
+
+        response =
+            "🎨 <b>CSS</b><br><br>" +
+
+            "CSS stands for Cascading Style Sheets. " +
+
+            "<br><br>" +
+
+            "It is used to style webpages.";
+
+    }
+
+
+    /* JAVASCRIPT */
+
+    else if (
+        question.includes(
+            "javascript"
+        )
+    ) {
+
+        response =
+            "⚡ <b>JavaScript</b><br><br>" +
+
+            "JavaScript is a programming language " +
+            "used to make webpages interactive.";
+
+    }
+
+
+    /* COMPUTER */
+
+    else if (
+        question.includes(
+            "computer"
+        )
+    ) {
+
+        response =
+            "💻 <b>Computer</b><br><br>" +
+
+            "A computer is an electronic device " +
+            "that processes data and follows instructions.";
+
+    }
+
+
+    /* MATH */
+
+    else if (
+        question.includes("math") ||
+        question.includes(
+            "mathematics"
+        )
+    ) {
+
+        response =
+            "📐 <b>Mathematics</b><br><br>" +
+
+            "Mathematics is the study of numbers, " +
+            "quantities, shapes, patterns and logic.";
+
+    }
+
+
+    /* SANDHI */
+
+    else if (
+        question.includes("sandhi")
+    ) {
+
+        response =
+            "🕉️ <b>Sandhi</b><br><br>" +
+
+            "Sandhi refers to changes that occur " +
+            "when sounds or words come together, " +
+            "especially in Sanskrit.";
+
+    }
+
+
+    /* SUKTA */
+
+    else if (
+        question.includes("sukta") ||
+        question.includes("sūkta")
+    ) {
+
+        response =
+            "🕉️ <b>Sūkta</b><br><br>" +
+
+            "A Sūkta is a hymn or collection " +
+            "of verses, especially in the Vedic tradition.";
+
+    }
+
+
+    /* HELLO */
+
+    else if (
+        question === "hi" ||
+        question === "hello" ||
+        question.includes(
+            "hello knowledge"
+        )
+    ) {
+
+        response =
+            "👋 <b>Hello!</b><br><br>" +
+
+            "Welcome to Knowledge X! " +
+
+            "<br><br>" +
+
+            "What would you like to learn today?";
+
+    }
+
+
+    /* UNKNOWN */
+
+    else {
+
+        response =
+            "🔎 <b>Knowledge X</b><br><br>" +
+
+            "I couldn't find that topic in " +
+            "my current offline knowledge library." +
+
+            "<br><br>" +
+
+            "Try asking about " +
+
+            "<b>Science, Maths, Coding, AI, " +
+            "Space, English, Social Studies " +
+            "or Vedas</b>.";
+
+    }
+
+
+    answer.innerHTML =
+        response;
+
+}
+
+
+/* ==========================================
+   SPELL THE WORD
+========================================== */
+
+const words = [
+
+    "knowledge",
+    "science",
+    "computer",
+    "language",
+    "planet",
+    "adventure",
+    "education",
+    "spaceship",
+    "discovery",
+    "technology"
+
+];
+
+
+let currentWord =
+    words[
+        Math.floor(
+            Math.random() *
+            words.length
+        )
+    ];
+
+
+let spellingScore = 0;
+
+
+function hearWord() {
+
+    speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            currentWord
+        );
+
+
+    speech.rate =
+        0.8;
+
+
+    speechSynthesis.speak(
+        speech
+    );
+
+}
+
+
+function checkSpelling() {
+
+    const input =
+        document.getElementById(
+            "spellInput"
+        );
+
+
+    const result =
+        document.getElementById(
+            "spellResult"
+        );
+
+
+    if (
+        input.value
+            .trim()
+            .toLowerCase()
+        ===
+        currentWord
+    ) {
+
+
+        spellingScore++;
+
+
+        result.innerHTML =
+            "🎉 Correct! ⭐ Score: " +
+            spellingScore;
+
+
+        input.value = "";
+
+
+        currentWord =
+            words[
+                Math.floor(
+                    Math.random() *
+                    words.length
+                )
+            ];
+
+
+        setTimeout(
+            hearWord,
+            500
+        );
+
+    }
+
+    else {
+
+        result.innerHTML =
+            "❌ Try again!";
+
+    }
+
+}
+
+
+/* ==========================================
+   ROCKET BUILDER
+========================================== */
+
+let rocketParts =
+    JSON.parse(
+        localStorage.getItem(
+            "rocketParts"
+        )
+    ) || {};
+
+
+function updateRocket() {
+
+
+    const parts = [
+
+        "cockpit",
+        "hull",
+        "engine",
+        "wings",
+        "aiModule"
+
+    ];
+
+
+    const names = {
+
+        cockpit:
+            "🪟 Cockpit",
+
+        hull:
+            "🛸 Hull",
+
+        engine:
+            "🔥 Engine",
+
+        wings:
+            "🪽 Wings",
+
+        aiModule:
+            "🤖 AI Module"
+
+    };
+
+
+    parts.forEach(
+        part => {
+
+
+        const element =
+            document.getElementById(
+                part
+            );
+
+
+        const status =
+            document.getElementById(
+                part + "Status"
+            );
+
+
+        if (
+            rocketParts[part]
+        ) {
+
+
+            element.innerText =
+                names[part];
+
+
+            element.style.borderColor =
+                "#00d9ff";
+
+
+            status.innerText =
+                "✅ Added";
+
+        }
+
+
+        else {
+
+
+            element.innerText =
+                "🔒 " +
+                names[part]
+                    .replace(
+                        /^.\s/,
+                        ""
+                    );
+
+
+            element.style.borderColor =
+                "#34445e";
+
+
+            status.innerText =
+                "🔒";
+
+        }
+
+    });
+
+}
+
+
+function togglePart(
+    part,
+    cost
+) {
+
+
+    /* REMOVE PART */
+
+    if (
+        rocketParts[part]
+    ) {
+
+
+        delete rocketParts[
+            part
+        ];
+
+
+        localStorage.setItem(
+            "rocketParts",
+            JSON.stringify(
+                rocketParts
+            )
+        );
+
+
+        updateRocket();
+
+
+        return;
+
+    }
+
+
+    /* NOT ENOUGH POINTS */
+
+    if (
+        buildPoints < cost
+    ) {
+
+
+        alert(
+
+            "🚀 You need " +
+            cost +
+            " Build Points " +
+            "to unlock this part.\n\n" +
+
+            "Earn points by completing quizzes!"
+
+        );
+
+
+        return;
+
+    }
+
+
+    /* BUY PART */
+
+    buildPoints -= cost;
+
+
+    rocketParts[part] =
+        true;
+
+
+    localStorage.setItem(
+        "buildPoints",
+        buildPoints
+    );
+
+
+    localStorage.setItem(
+        "rocketParts",
+        JSON.stringify(
+            rocketParts
+        )
+    );
+
+
+    updatePoints();
+
+
+    updateRocket();
+
+}
+
+
+function resetRocket() {
+
+
+    rocketParts = {};
+
+
+    localStorage.setItem(
+        "rocketParts",
+        JSON.stringify(
+            rocketParts
+        )
+    );
+
+
+    updateRocket();
+
+}
+
+
+/* ==========================================
+   RESTORE SELECTED CLASS
+========================================== */
+
+if (selectedClass) {
+
+    document.getElementById(
+        "selectedClass"
+    ).innerHTML =
+
+        "🎓 Current Class: <strong>" +
+        selectedClass +
+        "</strong>";
+
+}
+
+
+/* ==========================================
+   RESTORE ROCKET
+========================================== */
+
+updateRocket();
+
+</script>
+
+</body>
+</html>v
